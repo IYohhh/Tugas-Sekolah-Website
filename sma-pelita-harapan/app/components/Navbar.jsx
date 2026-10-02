@@ -11,7 +11,6 @@ export default function Navbar() {
   const router = useRouter();
   const [activeMenu, setActiveMenu] = useState("Beranda");
   const [showTentang, setShowTentang] = useState(false);
-  const [showMobile, setShowMobile] = useState(false);
   const [pendingSection, setPendingSection] = useState(null);
   const isTentangPage = pathname === "/visi-misi";
   const isDetailKegiatan = pathname === "/detail-kegiatan";
@@ -169,7 +168,6 @@ export default function Navbar() {
   ) => {
     setActiveMenu(menuName);
     setShowTentang(false);
-    setShowMobile(false);
 
     /* ==================== JIKA SUDAH DI BERANDA ==================== */
 
@@ -235,15 +233,8 @@ export default function Navbar() {
 
   /* ==================== RENDER ==================== */
 
-  // Tutup menu mobile setiap pindah halaman agar tidak nyangkut terbuka.
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset UI yang disengaja saat pathname berubah.
-    setShowMobile(false);
-    setShowTentang(false);
-  }, [pathname]);
-
   return (
-    <nav className="fixed left-3 right-3 top-3 z-50 flex min-h-[72px] flex-wrap items-center justify-between gap-2 rounded-[24px] border border-white/40 bg-white/60 px-4 py-3 shadow-[0_10px_35px_rgba(35,68,56,0.10)] backdrop-blur-xl sm:left-5 sm:right-5 sm:top-5 sm:px-5 md:min-h-[82px]">
+    <nav className="fixed left-5 right-5 top-5 z-50 flex h-[82px] items-center justify-between rounded-[24px] border border-white/40 bg-white/60 px-5 shadow-[0_10px_35px_rgba(35,68,56,0.10)] backdrop-blur-xl">
 
       {/* ==================== LOGO ==================== */}
 
@@ -260,21 +251,21 @@ export default function Navbar() {
           />
         </div>
 
-        <div className="min-w-0">
-          <h1 className="truncate text-[15px] font-bold leading-tight text-[#234438] sm:text-[17px]">
+        <div>
+          <h1 className="text-[17px] font-bold leading-tight text-[#234438]">
             SMA PELITA HARAPAN
           </h1>
 
-          <p className="hidden text-[11px] font-medium text-[#5D7A6F] min-[400px]:block">
+          <p className="text-[11px] font-medium text-[#5D7A6F]">
             Website resmi sekolah
           </p>
         </div>
 
       </div>
 
-      {/* ==================== MENU NAVIGASI (DESKTOP) ==================== */}
+      {/* ==================== MENU NAVIGASI ==================== */}
 
-      <div className="hidden items-center gap-1 lg:flex">
+      <div className="flex items-center gap-1">
 
         {menu.map((item) => {
           const isActive =
@@ -512,99 +503,22 @@ export default function Navbar() {
 
       </div>
 
-      {/* ==================== TOMBOL GABUNG + HAMBURGER ==================== */}
+      {/* ==================== TOMBOL GABUNG SEKARANG ==================== */}
 
-      <div className="flex items-center gap-2">
-        <Link
-          href="/#ppdb"
-          onClick={(e) => {
-            e.preventDefault();
+      <Link
+        href="/#ppdb"
+        onClick={(e) => {
+          e.preventDefault();
 
-            handleSectionNavigation(
-              "ppdb",
-              "PPDB"
-            );
-          }}
-          className="hidden rounded-[15px] bg-[#EF8A7D] px-5 py-3 text-sm font-bold text-white shadow-[0_6px_18px_rgba(239,138,125,0.18)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E] hover:shadow-[0_10px_25px_rgba(239,138,125,0.25)] min-[480px]:inline-flex lg:inline-flex"
-        >
-          Gabung Sekarang
-        </Link>
-
-        <button
-          type="button"
-          onClick={() => setShowMobile((prev) => !prev)}
-          aria-expanded={showMobile}
-          aria-label={showMobile ? "Tutup menu navigasi" : "Buka menu navigasi"}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/80 text-xl font-bold text-[#234438] shadow-sm transition hover:bg-[#E1F2EE] lg:hidden"
-        >
-          {showMobile ? "×" : "☰"}
-        </button>
-      </div>
-
-      {/* ==================== MENU MOBILE ==================== */}
-
-      {showMobile && (
-        <div className="basis-full rounded-2xl bg-white/90 p-3 shadow-inner lg:hidden">
-          <div className="flex flex-col gap-1">
-            {[
-              { name: "Beranda", section: null },
-              { name: "Tentang", section: "tentang" },
-              { name: "Kegiatan", section: "kegiatan-sekolah" },
-              { name: "PPDB", section: "ppdb" },
-              { name: "Galeri", section: "galeri" },
-              { name: "Testimoni", section: "testimoni" },
-            ].map((item) => (
-              <button
-                key={item.name}
-                type="button"
-                onClick={() => {
-                  if (item.name === "Beranda") {
-                    setActiveMenu("Beranda");
-                    setShowMobile(false);
-                    setShowTentang(false);
-                    setPendingSection(null);
-                    if (pathname === "/") {
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    } else {
-                      router.push("/");
-                    }
-                    return;
-                  }
-                  handleSectionNavigation(item.section, item.name);
-                }}
-                className={`rounded-xl px-4 py-3 text-left text-sm font-semibold text-[#234438] transition hover:bg-[#E1F2EE] ${
-                  activeMenu === item.name ? "bg-[#E1F2EE]" : ""
-                }`}
-              >
-                {item.name}
-              </button>
-            ))}
-
-            <Link
-              href="/visi-misi"
-              onClick={() => {
-                setShowMobile(false);
-                setShowTentang(false);
-                setActiveMenu("Tentang");
-              }}
-              className="rounded-xl px-4 py-3 text-left text-sm font-semibold text-[#234438] transition hover:bg-[#E1F2EE]"
-            >
-              Visi dan Misi Sekolah
-            </Link>
-
-            <Link
-              href="/#ppdb"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSectionNavigation("ppdb", "PPDB");
-              }}
-              className="mt-1 rounded-xl bg-[#EF8A7D] px-4 py-3 text-center text-sm font-bold text-white transition hover:bg-[#E97C6E] min-[480px]:hidden"
-            >
-              Gabung Sekarang
-            </Link>
-          </div>
-        </div>
-      )}
+          handleSectionNavigation(
+            "ppdb",
+            "PPDB"
+          );
+        }}
+        className="rounded-[15px] bg-[#EF8A7D] px-5 py-3 text-sm font-bold text-white shadow-[0_6px_18px_rgba(239,138,125,0.18)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E] hover:shadow-[0_10px_25px_rgba(239,138,125,0.25)]"
+      >
+        Gabung Sekarang
+      </Link>
 
     </nav>
   );

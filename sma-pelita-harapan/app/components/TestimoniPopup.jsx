@@ -7,7 +7,6 @@ export default function TestimoniPopup({ testimoni, onClose }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- penanda client-mount untuk portal, hanya sekali.
     setMounted(true);
   }, []);
 
@@ -17,17 +16,10 @@ export default function TestimoniPopup({ testimoni, onClose }) {
     // Mengunci scroll halaman belakang
     document.body.style.overflow = "hidden";
 
-    // Tutup popup dengan tombol Escape agar mudah diakses keyboard.
-    const handleKey = (e) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", handleKey);
-
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKey);
     };
-  }, [testimoni, onClose]);
+  }, [testimoni]);
 
   if (!mounted || !testimoni) return null;
 
@@ -56,10 +48,7 @@ export default function TestimoniPopup({ testimoni, onClose }) {
           <img
             src={testimoni.image}
             alt={testimoni.nama}
-            onError={(e) => {
-              e.currentTarget.src = "/file.svg";
-            }}
-            className="h-[220px] w-[220px] rounded-full bg-neutral-100 object-cover"
+            className="h-[220px] w-[220px] rounded-full object-cover"
           />
         </div>
 

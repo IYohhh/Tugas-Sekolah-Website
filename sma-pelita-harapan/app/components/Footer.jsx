@@ -26,7 +26,7 @@ export default function Footer() {
         </div>
 
         {/* CONTACT US */}
-        <div className="pt-8 md:pt-[88px]">
+        <div className="pt-[88px]">
           <h2 className="text-[25px] font-extrabold text-white">CONTACT US</h2>
 
           <div className="mt-3 h-[2px] w-[155px] bg-[#5D9B8B]"/>
@@ -56,9 +56,9 @@ export default function Footer() {
         </div>
 
         {/* MAIN MENU */}
-        <div className="pt-8 md:pt-[88px]">
+        <div className="pt-88px">
           <h2 className="text-[25px] font-extrabold text-white">MAIN MENU</h2>
-          <div className="mt-3 h-[2px] w-[155px] bg-[#5D9B8B]" />
+          <div className="mt-3 h-2px w-155px bg-[#5D9B8B]" />
           <div className="mt-5 flex flex-col gap-4">
 
             <Link href="/" className="group w-fit text-[16px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_3px_10px_rgba(255,255,255,0.12)]">
@@ -69,19 +69,19 @@ export default function Footer() {
               <span className="border-b border-transparent pb-1 transition-all duration-300 group-hover:border-white">Tentang</span>
             </Link>
 
-            <Link href="/#kegiatan-sekolah" className="group w-fit text-[16px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_3px_10px_rgba(255,255,255,0.12)]">
+            <Link href="/kegiatan" className="group w-fit text-[16px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_3px_10px_rgba(255,255,255,0.12)]">
               <span className="border-b border-transparent pb-1 transition-all duration-300 group-hover:border-white">Kegiatan</span>
             </Link>
 
-            <Link href="/#ppdb" className="group w-fit text-[16px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_3px_10px_rgba(255,255,255,0.12)]">
+            <Link href="/ppdb" className="group w-fit text-[16px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_3px_10px_rgba(255,255,255,0.12)]">
               <span className="border-b border-transparent pb-1 transition-all duration-300 group-hover:border-white">PPDB</span>
             </Link>
 
-            <Link href="/#galeri" className="group w-fit text-[16px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_3px_10px_rgba(255,255,255,0.12)]">
+            <Link href="/galeri" className="group w-fit text-[16px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_3px_10px_rgba(255,255,255,0.12)]">
               <span className="border-b border-transparent pb-1 transition-all duration-300 group-hover:border-white">Gallery</span>
             </Link>
 
-            <Link href="/#testimoni" className="group w-fit text-[16px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_3px_10px_rgba(255,255,255,0.12)]">
+            <Link href="/testimoni" className="group w-fit text-[16px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_3px_10px_rgba(255,255,255,0.12)]">
               <span className="border-b border-transparent pb-1 transition-all duration-300 group-hover:border-white">Testimoni</span>
             </Link>
           </div>

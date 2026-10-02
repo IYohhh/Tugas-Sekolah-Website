@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TestimoniPopup from "./components/TestimoniPopup";
-import { getKegiatan, getGaleri } from "./lib/api";
+import { getGaleri } from "./lib/api";
 
 import heroImage from "../assets/kegiatan1.jpg";
 import kegiatan2 from "../assets/kegiatan2.jpg";
@@ -14,33 +14,16 @@ import logo from "../assets/logo_pelita-harapan-removebg.png";
 export default function Home() {
   const [kegiatan, setKegiatan] = useState([]);
   const [loadingKegiatan, setLoadingKegiatan] = useState(true);
-  const [errorKegiatan, setErrorKegiatan] = useState("");
   const [selectedTestimoni, setSelectedTestimoni] = useState(null);
   const [galeri, setGaleri] = useState([]);
   const [loadingGaleri, setLoadingGaleri] = useState(true);
   const [errorGaleri, setErrorGaleri] = useState("");
 
-  const loadKegiatan = async () => {
-    setLoadingKegiatan(true);
-    setErrorKegiatan("");
-    try {
-      const data = await getKegiatan();
-      setKegiatan(data);
-    } catch (error) {
-      setErrorKegiatan(
-        error?.message || "Gagal memuat data kegiatan. Coba lagi nanti."
-      );
-    } finally {
-      setLoadingKegiatan(false);
-    }
-  };
-
   const loadGaleri = async () => {
-    setLoadingGaleri(true);
-    setErrorGaleri("");
     try {
       const data = await getGaleri();
       setGaleri(data);
+      setErrorGaleri("");
     } catch (error) {
       setErrorGaleri(
         error?.message || "Gagal memuat data galeri. Coba lagi nanti."
@@ -51,9 +34,42 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- fetch awal data kegiatan & galeri dari backend.
-    loadKegiatan();
-    loadGaleri();
+    const fetchKegiatan = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/api/kegiatan"
+        );
+
+        if (!response.ok) {
+          throw new Error("Gagal mengambil data kegiatan");
+        }
+
+        const data = await response.json();
+        setKegiatan(data);
+      } catch (error) {
+        console.error("Error mengambil kegiatan:", error);
+      } finally {
+        setLoadingKegiatan(false);
+      }
+    };
+
+    fetchKegiatan();
+
+    const fetchGaleri = async () => {
+      try {
+        const data = await getGaleri();
+        setGaleri(data);
+        setErrorGaleri("");
+      } catch (error) {
+        setErrorGaleri(
+          error?.message || "Gagal memuat data galeri. Coba lagi nanti."
+        );
+      } finally {
+        setLoadingGaleri(false);
+      }
+    };
+
+    fetchGaleri();
   }, []);
 
   return (
@@ -103,14 +119,14 @@ export default function Home() {
 
             <div className="mt-6 flex items-center gap-3">
               <Link
-                href="/#ppdb"
+                href="/ppdb"
                 className="rounded-[14px] bg-[#EF8A7D] px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(239,138,125,0.25)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E]"
               >
                 Lihat PPDB
               </Link>
 
               <Link
-                href="/#galeri"
+                href="/galeri"
                 className="rounded-[14px] border border-white/30 bg-black/20 px-5 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/20"
               >
                 Jelajahi Galeri
@@ -429,35 +445,15 @@ export default function Home() {
               <div className="flex w-max snap-x snap-mandatory gap-5 pr-2">
 
                 {loadingKegiatan ? (
-                  <div
-                    role="status"
-                    aria-live="polite"
-                    className="flex h-[260px] w-[300px] items-center justify-center rounded-[20px] bg-[#F0D8D1]"
-                  >
+                  <div className="flex h-[260px] w-[300px] items-center justify-center rounded-[20px] bg-[#F0D8D1]">
                     <p className="text-sm font-semibold text-[#2C806C]">
                       Memuat kegiatan...
                     </p>
                   </div>
-                ) : errorKegiatan ? (
-                  <div
-                    role="alert"
-                    className="flex h-[260px] w-[300px] flex-col items-center justify-center gap-3 rounded-[20px] bg-[#F0D8D1] p-6 text-center"
-                  >
-                    <p className="text-sm font-semibold text-[#163D32]">
-                      {errorKegiatan}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={loadKegiatan}
-                      className="rounded-full bg-[#163D32] px-5 py-2 text-xs font-bold text-white transition hover:bg-[#234438]"
-                    >
-                      Coba lagi
-                    </button>
-                  </div>
                 ) : kegiatan.length === 0 ? (
-                  <div className="flex h-[260px] w-[300px] items-center justify-center rounded-[20px] bg-[#F0D8D1] p-6 text-center">
+                  <div className="flex h-[260px] w-[300px] items-center justify-center rounded-[20px] bg-[#F0D8D1]">
                     <p className="text-sm font-semibold text-[#2C806C]">
-                      Belum ada kegiatan saat ini.
+                      Belum ada kegiatan.
                     </p>
                   </div>
                 ) : (
@@ -708,7 +704,7 @@ export default function Home() {
               <div className="flex flex-col items-start gap-3 lg:items-end">
 
                 <Link
-                  href="/#ppdb"
+                  href="#ppdb"
                   className="rounded-[14px] bg-white px-6 py-3 text-[12px] font-extrabold text-[#EF8A7D] shadow-[0_8px_20px_rgba(255,255,255,0.15)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#FFF7F5]"
                 >
                   Daftar PPDB Sekarang
@@ -815,7 +811,11 @@ export default function Home() {
                   </p>
                   <button
                     type="button"
-                    onClick={loadGaleri}
+                    onClick={() => {
+                      setLoadingGaleri(true);
+                      setErrorGaleri("");
+                      loadGaleri();
+                    }}
                     className="rounded-full bg-[#163D32] px-5 py-2 text-xs font-bold text-white transition hover:bg-[#234438]"
                   >
                     Coba lagi
@@ -832,7 +832,7 @@ export default function Home() {
               </div>
             ) : (
               <div className="flex w-max gap-5">
-                {galeri.map((item, index) => (
+                {galeri.map((item) => (
                   <div
                     key={item.id}
                     className="group relative h-[375px] w-[82vw] max-w-[450px] shrink-0 overflow-hidden rounded-[22px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_45px_rgba(35,68,56,0.18)] sm:w-[450px]"
@@ -1035,17 +1035,8 @@ export default function Home() {
             ].map((item) => (
               <div
                 key={item.nama}
-                role="button"
-                tabIndex={0}
-                aria-label={`Baca testimoni ${item.nama}`}
                 onClick={() => setSelectedTestimoni(item)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setSelectedTestimoni(item);
-                  }
-                }}
-                className="group relative cursor-pointer overflow-hidden rounded-[22px] bg-[#F0D8D1] p-7 shadow-[0_12px_30px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2C806C]"
+                className="group relative cursor-pointer overflow-hidden rounded-[22px] bg-[#F0D8D1] p-7 shadow-[0_12px_30px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
               >
 
                 <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-white/20 transition-transform duration-500 group-hover:scale-150" />
@@ -1055,12 +1046,7 @@ export default function Home() {
                   <img
                     src={item.image}
                     alt={item.nama}
-                    loading="lazy"
-                    onError={(e) => {
-                      // Fallback kalau foto eksternal gagal dimuat.
-                      e.currentTarget.src = "/file.svg";
-                    }}
-                    className="h-[82px] w-[82px] shrink-0 rounded-full bg-white object-cover ring-4 ring-white/70"
+                    className="h-[82px] w-[82px] shrink-0 rounded-full object-cover ring-4 ring-white/70"
                   />
 
                   <div>
@@ -1484,7 +1470,7 @@ export default function Home() {
               </div>
 
               <Link
-                href="/#ppdb"
+                href="#ppdb"
                 className="inline-flex items-center justify-center rounded-[14px] bg-[#163D32] px-6 py-3 text-[12px] font-extrabold text-white shadow-[0_8px_18px_rgba(35,68,56,0.15)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#234438]"
               >
                 Lihat Informasi PPDB →

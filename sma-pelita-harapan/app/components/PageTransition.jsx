@@ -220,7 +220,6 @@ function RouteLoadingBar({ pathname }) {
   const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- indikator loading yang disengaja saat pathname berubah.
     setIsNavigating(true);
     const timer = setTimeout(() => setIsNavigating(false), 600);
     return () => clearTimeout(timer);
