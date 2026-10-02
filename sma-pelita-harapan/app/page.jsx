@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaArrowRight, FaImages, FaPaperPlane } from "react-icons/fa";
 import TestimoniPopup from "./components/TestimoniPopup";
-import { getGaleri } from "./lib/api";
+import { getGaleri, getKegiatan } from "./lib/api";
+import { initReveal } from "./lib/reveal";
 
 import heroImage from "../assets/kegiatan1.jpg";
 import kegiatan2 from "../assets/kegiatan2.jpg";
@@ -36,15 +38,7 @@ export default function Home() {
   useEffect(() => {
     const fetchKegiatan = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:8000/api/kegiatan"
-        );
-
-        if (!response.ok) {
-          throw new Error("Gagal mengambil data kegiatan");
-        }
-
-        const data = await response.json();
+        const data = await getKegiatan();
         setKegiatan(data);
       } catch (error) {
         console.error("Error mengambil kegiatan:", error);
@@ -72,6 +66,11 @@ export default function Home() {
     fetchGaleri();
   }, []);
 
+  useEffect(() => {
+    const cleanup = initReveal();
+    return cleanup;
+  }, []);
+
   return (
     <main className="overflow-hidden bg-[#F5FAF8]">
 
@@ -81,7 +80,7 @@ export default function Home() {
 
       <section
         id="beranda"
-        className="relative min-h-screen overflow-hidden"
+        className="relative flex min-h-[88vh] min-h-[88svh] items-center overflow-hidden md:min-h-[92svh] lg:min-h-screen"
       >
         <Image
           src={heroImage}
@@ -92,43 +91,44 @@ export default function Home() {
           className="object-cover object-center"
         />
 
-        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A2E26]/80 via-[#0A2E26]/50 to-black/10" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent" />
 
-        <div className="relative z-10 flex min-h-screen items-center px-8 pb-16 pt-32 md:px-16 lg:px-24">
-          <div className="max-w-[600px]">
+        <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 pb-16 pt-32 md:px-10 md:pb-20 md:pt-36 lg:px-14">
+          <div className="hero-enter max-w-[580px]">
 
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md md:text-sm">
               <span className="h-2 w-2 rounded-full bg-white" />
-              Website Kampus Modern
+              Website Resmi Sekolah
             </div>
 
-            <h1 className="text-5xl font-extrabold leading-[1.08] tracking-tight text-white md:text-6xl lg:text-[52px]">
+            <h1 className="max-w-[540px] text-[34px] font-extrabold leading-[1.1] tracking-tight text-white sm:text-[42px] md:text-[52px] lg:text-[56px]">
               Sekolah yang
               <br />
-              menginspirasi
+              menginspirasi generasi
               <br />
-              generasi masa
-              <br />
-              depan
+              masa depan
             </h1>
 
-            <p className="mt-6 max-w-[590px] text-base font-normal leading-7 text-white/90 md:text-lg">
+            <p className="mt-4 max-w-[520px] text-[15px] font-normal leading-6 text-white/90 md:text-base md:leading-7">
               Jelajahi program studi, kegiatan sekolah, dan proses PPDB
               dengan pengalaman yang lebih rapi, jelas, dan mudah digunakan.
             </p>
 
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/ppdb"
-                className="rounded-[14px] bg-[#EF8A7D] px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(239,138,125,0.25)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E]"
+                className="inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#EF8A7D] px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(239,138,125,0.25)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E]"
               >
                 Lihat PPDB
+                <FaArrowRight className="h-3.5 w-3.5" />
               </Link>
 
               <Link
-                href="/galeri"
-                className="rounded-[14px] border border-white/30 bg-black/20 px-5 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/20"
+                href="/#galeri"
+                className="inline-flex items-center justify-center gap-2 rounded-[14px] border border-white/30 bg-black/20 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/20"
               >
+                <FaImages className="h-3.5 w-3.5" />
                 Jelajahi Galeri
               </Link>
             </div>
@@ -148,14 +148,14 @@ export default function Home() {
       >
         <div className="mx-auto max-w-[1200px]">
 
-          <div className="mb-10 max-w-[760px]">
+          <div data-reveal className="reveal reveal-left mb-10 max-w-[760px]">
 
             <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-semibold text-[#2C806C]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#2C806C]" />
               Tentang Sekolah
             </div>
 
-            <h2 className="text-[38px] font-extrabold leading-[1.08] tracking-tight text-[#163D32] md:text-[46px] lg:text-[50px]">
+            <h2 className="text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[36px] md:text-[46px] lg:text-[50px]">
               Sekolah yang menyiapkan siswa
               <br />
               untuk belajar, berkarya, dan
@@ -176,7 +176,7 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
 
             {/* KOLOM KIRI */}
-            <div className="flex flex-col gap-5">
+            <div data-reveal className="reveal reveal-left flex flex-col gap-5">
 
               <div className="rounded-[20px] border border-[#7D918B] bg-[#DFF1ED] p-7 shadow-[0_12px_30px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(35,68,56,0.10)]">
 
@@ -243,7 +243,7 @@ export default function Home() {
 
 
             {/* KOLOM KANAN */}
-            <div className="flex flex-col gap-6">
+            <div data-reveal className="reveal reveal-right flex flex-col gap-6">
 
               <div className="group relative h-[320px] overflow-hidden rounded-[20px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(35,68,56,0.16)]">
 
@@ -271,10 +271,8 @@ export default function Home() {
 
                 <div className="absolute bottom-5 left-5 right-5 transition-all duration-500 group-hover:-translate-y-1">
 
-                  <h3 className="text-[27px] font-bold leading-[1.12] text-[#17362B] md:text-[30px]">
-                    Lingkungan belajar yang
-                    <br />
-                    nyaman dan inspiratif.
+                  <h3 className="text-[22px] font-bold leading-[1.15] text-[#17362B] md:text-[30px]">
+                    Lingkungan belajar yang nyaman dan inspiratif.
                   </h3>
 
                   <p className="mt-3 max-w-[550px] text-[13px] font-medium leading-5 text-[#17362B] md:text-[14px]">
@@ -377,14 +375,14 @@ export default function Home() {
 
           <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2">
 
-            <div>
+            <div data-reveal className="reveal reveal-left">
 
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-semibold text-[#2C806C]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#2C806C]" />
                 Kegiatan Sekolah
               </div>
 
-              <h2 className="max-w-[560px] text-[38px] font-extrabold leading-[1.08] tracking-tight text-[#163D32] md:text-[46px] lg:text-[50px]">
+              <h2 className="max-w-[560px] text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[36px] md:text-[46px] lg:text-[50px]">
                 Kegiatan yang memperkaya
                 <br />
                 pengalaman belajar di luar
@@ -401,7 +399,7 @@ export default function Home() {
             </div>
 
 
-            <div className="relative mt-2 h-[175px] md:h-[195px]">
+            <div data-reveal className="reveal reveal-right relative mt-2 h-[175px] md:h-[195px]">
 
               <div className="absolute left-0 top-0 h-[115px] w-[48%] overflow-hidden rounded-[18px] md:h-[130px]">
                 <Image
@@ -440,18 +438,18 @@ export default function Home() {
 
           <div className="relative mt-10">
 
-            <div className="overflow-x-auto scroll-smooth pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div>
 
-              <div className="flex w-max snap-x snap-mandatory gap-5 pr-2">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
                 {loadingKegiatan ? (
-                  <div className="flex h-[260px] w-[300px] items-center justify-center rounded-[20px] bg-[#F0D8D1]">
+                  <div className="flex h-[320px] w-full items-center justify-center rounded-[20px] bg-[#F0D8D1]">
                     <p className="text-sm font-semibold text-[#2C806C]">
                       Memuat kegiatan...
                     </p>
                   </div>
                 ) : kegiatan.length === 0 ? (
-                  <div className="flex h-[260px] w-[300px] items-center justify-center rounded-[20px] bg-[#F0D8D1]">
+                  <div className="flex h-[320px] w-full items-center justify-center rounded-[20px] bg-[#F0D8D1]">
                     <p className="text-sm font-semibold text-[#2C806C]">
                       Belum ada kegiatan.
                     </p>
@@ -461,26 +459,43 @@ export default function Home() {
                     <Link
                       key={item.id}
                       href={`/detail-kegiatan?id=${item.id}`}
-                      className="group relative block h-[260px] w-[285px] shrink-0 snap-start overflow-hidden rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)] md:w-[300px]"
+                      data-reveal
+                      style={{ "--reveal-delay": `${index * 60}ms` }}
+                      className="reveal reveal-up group flex h-[320px] w-full flex-col overflow-hidden rounded-[20px] bg-[#F0D8D1] shadow-[0_12px_25px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
                     >
 
-                      <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-white/20 transition-transform duration-700 ease-out group-hover:scale-150" />
+                      <div className="relative h-[140px] w-full shrink-0 overflow-hidden">
+                        <img
+                          src={item.gambar}
+                          alt={item.judul}
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        />
+                      </div>
 
-                      <span className="relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#E1F2EE] text-[11px] font-bold text-[#2C806C] transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
+                      <div className="flex flex-1 flex-col p-4">
 
-                      <h3 className="relative z-10 mt-6 text-[20px] font-extrabold leading-[1.35] text-[#163D32]">
-                        {item.judul}
-                      </h3>
+                        <span className="inline-flex w-fit items-center rounded-full bg-[#E1F2EE] px-3 py-1 text-[10px] font-bold text-[#2C806C]">
+                          {item.kategori}
+                        </span>
 
-                      <p className="relative z-10 mt-4 line-clamp-3 text-[12px] leading-6 text-[#698078]">
-                        {item.deskripsi}
-                      </p>
+                        <h3 className="mt-3 line-clamp-2 text-[17px] font-extrabold leading-[1.3] text-[#163D32]">
+                          {item.judul}
+                        </h3>
 
-                      <span className="absolute bottom-5 right-6 text-[11px] font-bold text-[#2C806C] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                        Lihat detail →
-                      </span>
+                        <p className="mt-2 line-clamp-2 text-[12px] leading-5 text-[#698078]">
+                          {item.deskripsi}
+                        </p>
+
+                        <p className="mt-auto pt-3 text-[11px] font-semibold text-[#668078]">
+                          {item.tanggal} · {item.lokasi}
+                        </p>
+
+                        <span className="mt-1 inline-flex items-center gap-1.5 text-[12px] font-bold text-[#2C806C] transition-all duration-300 group-hover:gap-2.5">
+                          Lihat detail
+                          <FaArrowRight className="h-3 w-3" />
+                        </span>
+
+                      </div>
 
                     </Link>
                   ))
@@ -490,12 +505,10 @@ export default function Home() {
 
             </div>
 
-            <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-20 bg-gradient-to-l from-[#F5FAF8] to-transparent md:block" />
-
           </div>
 
 
-          <div className="mt-6 rounded-[22px] bg-[#DFF1ED] px-7 py-7 shadow-[0_12px_30px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(35,68,56,0.10)] md:px-9 md:py-8">
+          <div data-reveal className="reveal reveal-up mt-6 rounded-[22px] bg-[#DFF1ED] px-7 py-7 shadow-[0_12px_30px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(35,68,56,0.10)] md:px-9 md:py-8">
 
             <h3 className="max-w-[700px] text-[24px] font-extrabold leading-[1.2] text-[#163D32] md:text-[27px]">
               Setiap kegiatan dirancang untuk
@@ -544,14 +557,14 @@ export default function Home() {
 
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.35fr_0.65fr]">
 
-            <div>
+            <div data-reveal className="reveal reveal-left">
 
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#3C8977]" />
                 Pendaftaran PPDB
               </div>
 
-              <h2 className="max-w-[720px] text-[38px] font-extrabold leading-[1.08] tracking-tight text-[#17362B] md:text-[48px] lg:text-[52px]">
+              <h2 className="max-w-[720px] text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#17362B] sm:text-[36px] md:text-[48px] lg:text-[52px]">
                 PPDB yang jelas, transparan,
                 <br />
                 dan mudah diikuti calon siswa.
@@ -566,7 +579,7 @@ export default function Home() {
             </div>
 
 
-            <div className="flex justify-center lg:justify-end">
+            <div data-reveal className="reveal reveal-right flex justify-center lg:justify-end">
 
               <div className="group relative flex h-[220px] w-[220px] items-center justify-center">
 
@@ -589,7 +602,7 @@ export default function Home() {
 
           <div className="mt-12 grid grid-cols-1 gap-7 lg:grid-cols-[1.6fr_1fr]">
 
-            <div className="rounded-[22px] bg-[#DFF1ED] p-6 shadow-[0_12px_30px_rgba(35,68,56,0.05)] md:p-7">
+            <div data-reveal className="reveal reveal-left rounded-[22px] bg-[#DFF1ED] p-6 shadow-[0_12px_30px_rgba(35,68,56,0.05)] md:p-7">
 
               <h3 className="max-w-[650px] text-[25px] font-extrabold leading-[1.15] text-[#17362B] md:text-[27px]">
                 Alur pendaftaran yang dirancang lebih
@@ -647,7 +660,7 @@ export default function Home() {
             </div>
 
 
-            <div className="rounded-[22px] bg-[#163D32] p-6 text-white shadow-[0_12px_30px_rgba(35,68,56,0.08)] md:p-7">
+            <div data-reveal className="reveal reveal-right rounded-[22px] bg-[#163D32] p-6 text-white shadow-[0_12px_30px_rgba(35,68,56,0.08)] md:p-7">
 
               <p className="text-[11px] font-semibold text-[#B9DCD2]">
                 Informasi Pendaftaran
@@ -704,10 +717,11 @@ export default function Home() {
               <div className="flex flex-col items-start gap-3 lg:items-end">
 
                 <Link
-                  href="#ppdb"
-                  className="rounded-[14px] bg-white px-6 py-3 text-[12px] font-extrabold text-[#EF8A7D] shadow-[0_8px_20px_rgba(255,255,255,0.15)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#FFF7F5]"
+                  href="/ppdb"
+                  className="inline-flex items-center justify-center gap-2 rounded-[14px] bg-white px-6 py-3 text-[12px] font-extrabold text-[#EF8A7D] shadow-[0_8px_20px_rgba(255,255,255,0.15)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#FFF7F5]"
                 >
                   Daftar PPDB Sekarang
+                  <FaArrowRight className="h-3.5 w-3.5" />
                 </Link>
 
                 <p className="text-[10px] font-medium text-white/90">
@@ -736,14 +750,14 @@ export default function Home() {
 
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
 
-            <div>
+            <div data-reveal className="reveal reveal-left">
 
               <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-semibold text-[#2C806C]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#2C806C]" />
                 Galeri Sekolah
               </div>
 
-              <h2 className="max-w-[650px] text-[44px] font-extrabold leading-[1.08] tracking-tight text-[#163D32] md:text-[50px] lg:text-[56px]">
+              <h2 className="max-w-[650px] text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[38px] md:text-[50px] lg:text-[56px]">
                 Galeri momen belajar,
                 <br />
                 kreativitas, dan
@@ -760,7 +774,7 @@ export default function Home() {
             </div>
 
 
-            <div className="rounded-[22px] bg-[#163D32] p-8 text-white shadow-[0_15px_35px_rgba(35,68,56,0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_22px_45px_rgba(35,68,56,0.18)]">
+            <div data-reveal className="reveal reveal-right rounded-[22px] bg-[#163D32] p-8 text-white shadow-[0_15px_35px_rgba(35,68,56,0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_22px_45px_rgba(35,68,56,0.18)]">
 
               <p className="text-[12px] font-semibold text-[#B9DCD2]">
                 Dokumentasi Sekolah
@@ -785,14 +799,14 @@ export default function Home() {
           </div>
 
 
-          <div className="-mx-6 mt-14 overflow-x-auto px-6 pb-5 md:-mx-10 md:px-10 lg:-mx-14 lg:px-14 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mt-14">
 
             {loadingGaleri ? (
-              <div className="flex w-max gap-5">
-                {[1, 2, 3].map((i) => (
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+                {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="flex h-[375px] w-[82vw] max-w-[450px] shrink-0 items-center justify-center rounded-[22px] bg-[#DFF1ED]"
+                    className="flex h-[375px] w-full items-center justify-center rounded-[22px] bg-[#DFF1ED]"
                   >
                     <p className="text-sm font-semibold text-[#2C806C]">
                       Memuat galeri...
@@ -801,10 +815,10 @@ export default function Home() {
                 ))}
               </div>
             ) : errorGaleri ? (
-              <div className="flex w-max gap-5">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
                 <div
                   role="alert"
-                  className="flex h-[375px] w-[82vw] max-w-[450px] shrink-0 flex-col items-center justify-center gap-3 rounded-[22px] bg-[#F0D8D1] p-6 text-center"
+                  className="flex h-[375px] w-full flex-col items-center justify-center gap-3 rounded-[22px] bg-[#F0D8D1] p-6 text-center"
                 >
                   <p className="text-sm font-semibold text-[#163D32]">
                     {errorGaleri}
@@ -823,27 +837,27 @@ export default function Home() {
                 </div>
               </div>
             ) : galeri.length === 0 ? (
-              <div className="flex w-max gap-5">
-                <div className="flex h-[375px] w-[82vw] max-w-[450px] shrink-0 items-center justify-center rounded-[22px] bg-[#DFF1ED]">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="flex h-[375px] w-full items-center justify-center rounded-[22px] bg-[#DFF1ED]">
                   <p className="text-sm font-semibold text-[#2C806C]">
                     Belum ada galeri saat ini.
                   </p>
                 </div>
               </div>
             ) : (
-              <div className="flex w-max gap-5">
-                {galeri.map((item) => (
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+                {galeri.map((item, index) => (
                   <div
                     key={item.id}
-                    className="group relative h-[375px] w-[82vw] max-w-[450px] shrink-0 overflow-hidden rounded-[22px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_45px_rgba(35,68,56,0.18)] sm:w-[450px]"
+                    data-reveal
+                    style={{ "--reveal-delay": `${index * 80}ms` }}
+                    className="reveal reveal-up group relative h-[375px] w-full overflow-hidden rounded-[22px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_45px_rgba(35,68,56,0.18)]"
                   >
-                    <Image
-                      src={item.gambar}
-                      alt={item.judul}
-                      fill
-                      sizes="(max-width: 768px) 85vw, 450px"
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#DFF1ED]">
+                      <p className="text-sm font-semibold text-[#2C806C]">
+                        Foto prestasi
+                      </p>
+                    </div>
 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D35] via-[#0B3D35]/20 to-transparent" />
 
@@ -867,7 +881,7 @@ export default function Home() {
           </div>
 
 
-          <div className="mt-10 rounded-[22px] bg-[#DFF1ED] px-7 py-7 shadow-[0_12px_30px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(35,68,56,0.10)] md:px-9 md:py-8">
+          <div data-reveal className="reveal reveal-up mt-10 rounded-[22px] bg-[#DFF1ED] px-7 py-7 shadow-[0_12px_30px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(35,68,56,0.10)] md:px-9 md:py-8">
 
             <h3 className="max-w-[700px] text-[24px] font-extrabold leading-[1.2] text-[#163D32] md:text-[27px]">
               Galeri yang menampilkan sisi nyata dari
@@ -921,11 +935,11 @@ export default function Home() {
               Testimoni
             </div>
 
-            <div className="grid grid-cols-1 items-end gap-12 lg:grid-cols-[1fr_0.65fr]">
+            <div data-reveal className="reveal reveal-left grid grid-cols-1 items-end gap-12 lg:grid-cols-[1fr_0.65fr]">
 
               <div>
 
-                <h2 className="max-w-[700px] text-[42px] font-extrabold leading-[1.08] tracking-tight text-[#163D32] md:text-[50px] lg:text-[56px]">
+                <h2 className="max-w-[700px] text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[38px] md:text-[50px] lg:text-[56px]">
                   Cerita dari mereka
                   <br />
                   yang pernah bersama
@@ -1032,11 +1046,13 @@ export default function Home() {
                 peran: "Alumni",
                 isi: "Pengalaman selama sekolah memberi saya banyak kesempatan untuk mencoba hal baru dan membangun rasa percaya diri.",
               },
-            ].map((item) => (
+            ].map((item, index) => (
               <div
                 key={item.nama}
+                data-reveal
+                style={{ "--reveal-delay": `${index * 60}ms` }}
                 onClick={() => setSelectedTestimoni(item)}
-                className="group relative cursor-pointer overflow-hidden rounded-[22px] bg-[#F0D8D1] p-7 shadow-[0_12px_30px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
+                className="reveal reveal-up group relative cursor-pointer overflow-hidden rounded-[22px] bg-[#F0D8D1] p-7 shadow-[0_12px_30px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
               >
 
                 <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-white/20 transition-transform duration-500 group-hover:scale-150" />
@@ -1108,7 +1124,7 @@ export default function Home() {
 
           {/* HEADER */}
 
-          <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-[1fr_0.65fr]">
+          <div data-reveal className="reveal reveal-left grid grid-cols-1 items-end gap-10 lg:grid-cols-[1fr_0.65fr]">
 
             <div>
 
@@ -1117,7 +1133,7 @@ export default function Home() {
                 Contact Us
               </div>
 
-              <h2 className="max-w-[720px] text-[42px] font-extrabold leading-[1.08] tracking-tight text-[#163D32] md:text-[50px] lg:text-[56px]">
+              <h2 className="max-w-[720px] text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[38px] md:text-[50px] lg:text-[56px]">
                 Punya pertanyaan?
                 <br />
                 Mari terhubung dengan
@@ -1146,7 +1162,7 @@ export default function Home() {
 
             {/* INFORMASI KONTAK */}
 
-            <div className="rounded-[22px] bg-[#163D32] p-7 text-white shadow-[0_15px_35px_rgba(35,68,56,0.10)] md:p-8">
+            <div data-reveal className="reveal reveal-left rounded-[22px] bg-[#163D32] p-7 text-white shadow-[0_15px_35px_rgba(35,68,56,0.10)] md:p-8">
 
               <p className="text-[12px] font-semibold text-[#B9DCD2]">
                 Informasi Sekolah
@@ -1289,7 +1305,7 @@ export default function Home() {
 
             {/* FORM */}
 
-            <div className="rounded-[22px] bg-[#DFF1ED] p-7 shadow-[0_15px_35px_rgba(35,68,56,0.06)] md:p-8">
+            <div data-reveal className="reveal reveal-right rounded-[22px] bg-[#DFF1ED] p-7 shadow-[0_15px_35px_rgba(35,68,56,0.06)] md:p-8">
 
               <div className="mb-7">
 
@@ -1436,9 +1452,7 @@ export default function Home() {
                 >
                   Kirim Pesan
 
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
+                  <FaPaperPlane className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
 
                 </button>
 
@@ -1470,10 +1484,11 @@ export default function Home() {
               </div>
 
               <Link
-                href="#ppdb"
-                className="inline-flex items-center justify-center rounded-[14px] bg-[#163D32] px-6 py-3 text-[12px] font-extrabold text-white shadow-[0_8px_18px_rgba(35,68,56,0.15)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#234438]"
+                href="/ppdb"
+                className="inline-flex items-center justify-center gap-2 rounded-[14px] bg-[#163D32] px-6 py-3 text-[12px] font-extrabold text-white shadow-[0_8px_18px_rgba(35,68,56,0.15)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#234438]"
               >
-                Lihat Informasi PPDB →
+                Lihat Informasi PPDB
+                <FaArrowRight className="h-3.5 w-3.5" />
               </Link>
 
             </div>
