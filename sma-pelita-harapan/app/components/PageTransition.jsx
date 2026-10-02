@@ -261,8 +261,25 @@ export default function PageTransition({ children }) {
     restDelta: 0.001,
   });
 
-  // Pastikan posisi scroll ter-reset ke atas secara mulus saat perpindahan rute
+  // Reset posisi scroll saat perpindahan rute.
+  // Jika URL membawa hash (mis. tombol kembali ke /#kegiatan-sekolah),
+  // scroll ke section tersebut agar tidak berhenti di atas halaman.
   useEffect(() => {
+    const hash = window.location.hash;
+
+    if (hash) {
+      const id = hash.replace("#", "");
+      const timer = setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "instant", block: "start" });
+        } else {
+          window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        }
+      }, 80);
+      return () => clearTimeout(timer);
+    }
+
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname]);
 
