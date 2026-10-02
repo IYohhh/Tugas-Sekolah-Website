@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "judul": "UPH High School Moot Court Competition",
+    "deskripsi": "Tim Moot Court SPH Lippo Village meraih First Breaking Team, Runner Up Team, dan Best Combined Memorial pada kompetisi UPH High School Moot Court Competition pada tahun 2024 dan 2025.",
+    "gambar": "/images/prestasi/moot-court.jpg"
+  },
+  {
+    "id": 2,
+    "judul": "Oxford Schools’ Debating Competition",
+    "deskripsi": "Ava Mikayla Emmanoella Kasih dan Sean Levi Danuseputra dari SPH Lippo Village berhasil mencapai babak final sebagai ESL Finalists dalam Oxford Schools’ Debating Competition 2025.",
+    "gambar": "/images/prestasi/oxford-debating.jpg"
+  },
+  {
+    "id": 3,
+    "judul": "Model Entrepreneur Competition 2025",
+    "deskripsi": "Sharon Jessie Suherman, siswa kelas 11 SPH Lippo Village, meraih posisi kedua dalam kategori New Venture Launch pada Model Entrepreneur Competition 2025 di Tokyo, Jepang.",
+    "gambar": "/images/prestasi/model-entrepreneur.jpg"
+  },
+  {
+    "id": 4,
+    "judul": "Kejuaraan Nasional Fencing 2025",
+    "deskripsi": "Maxwell Hidayat dari SPH Lippo Village meraih satu medali emas pada kategori Men’s Saber Team serta dua medali perunggu pada kategori individu Junior dan Cadet Men’s Saber dalam Kejuaraan Nasional Fencing 2025.",
+    "gambar": "/images/prestasi/fencing-2025.jpg"
+  },
+  {
+    "id": 5,
+    "judul": "Asia Christian Schools Conference 2026",
+    "deskripsi": "Tim Boys Varsity Basketball SPH Lippo Village meraih posisi kedua dalam Asia Christian Schools Conference 2026. Nathan juga memperoleh penghargaan Top Rebounder dan Top Defender.",
+    "gambar": "/images/prestasi/acsc-2026.jpg"
+  },
+  {
+    "id": 6,
+    "judul": "Global Research & Consulting Case Competition",
+    "deskripsi": "Tim SPH Lippo Village meraih posisi kedua dalam Global Research & Consulting Case Competition setelah menyelesaikan studi kasus bisnis bersama peserta dari berbagai negara.",
+    "gambar": "/images/prestasi/global-research.jpg"
+  },
+  {
+    "id": 7,
+    "judul": "Young Thinkers’ Trophy",
+    "deskripsi": "Katiana Indrasasana dari SPH Lippo Village meraih penghargaan Best Speaker dalam kompetisi Young Thinkers’ Trophy dan berhasil melaju ke babak Grand Final.",
+    "gambar": "/images/prestasi/young-thinkers.jpg"
+  },
+  {
+    "id": 8,
+    "judul": "National History Day – South Asia",
+    "deskripsi": "Siswa SPH Lippo Village meraih beberapa prestasi dalam National History Day South Asia, termasuk juara pertama pada kategori Group Exhibit dan Group Documentary serta juara ketiga pada kategori Group Documentary.",
+    "gambar": "/images/prestasi/national-history-day.jpg"
+  }
+]
