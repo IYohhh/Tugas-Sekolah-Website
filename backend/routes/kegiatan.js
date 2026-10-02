@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  const data = fs.readFileSync(dataPath, "utf-8");
+  const data =fs .readFileSync(dataPath, "utf-8");
   const kegiatan = JSON.parse(data);
 
   const item = kegiatan.find(
