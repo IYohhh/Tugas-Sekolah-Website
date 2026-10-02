@@ -4,18 +4,34 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TestimoniPopup from "./components/TestimoniPopup";
+import { getGaleri } from "./lib/api";
 
 import heroImage from "../assets/kegiatan1.jpg";
 import kegiatan2 from "../assets/kegiatan2.jpg";
 import kegiatan3 from "../assets/kegiatan3.jpg";
 import logo from "../assets/logo_pelita-harapan-removebg.png";
-import Galeri from "../assets/Galeri.jpg";
-import Galeri2 from "../assets/Galeri2.jpg";
 
 export default function Home() {
   const [kegiatan, setKegiatan] = useState([]);
   const [loadingKegiatan, setLoadingKegiatan] = useState(true);
   const [selectedTestimoni, setSelectedTestimoni] = useState(null);
+  const [galeri, setGaleri] = useState([]);
+  const [loadingGaleri, setLoadingGaleri] = useState(true);
+  const [errorGaleri, setErrorGaleri] = useState("");
+
+  const loadGaleri = async () => {
+    try {
+      const data = await getGaleri();
+      setGaleri(data);
+      setErrorGaleri("");
+    } catch (error) {
+      setErrorGaleri(
+        error?.message || "Gagal memuat data galeri. Coba lagi nanti."
+      );
+    } finally {
+      setLoadingGaleri(false);
+    }
+  };
 
   useEffect(() => {
     const fetchKegiatan = async () => {
@@ -38,6 +54,22 @@ export default function Home() {
     };
 
     fetchKegiatan();
+
+    const fetchGaleri = async () => {
+      try {
+        const data = await getGaleri();
+        setGaleri(data);
+        setErrorGaleri("");
+      } catch (error) {
+        setErrorGaleri(
+          error?.message || "Gagal memuat data galeri. Coba lagi nanti."
+        );
+      } finally {
+        setLoadingGaleri(false);
+      }
+    };
+
+    fetchGaleri();
   }, []);
 
   return (
@@ -755,124 +787,83 @@ export default function Home() {
 
           <div className="-mx-6 mt-14 overflow-x-auto px-6 pb-5 md:-mx-10 md:px-10 lg:-mx-14 lg:px-14 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
-            <div className="flex w-max gap-5">
-
-              {[
-                {
-                  image: Galeri2,
-                  category: "Olahraga",
-                  title: (
-                    <>
-                      Latihan, semangat, dan
-                      <br />
-                      sportivitas
-                    </>
-                  ),
-                  text: "Kegiatan olahraga menjadi ruang untuk membangun kesehatan, kerja tim, dan rasa percaya diri siswa.",
-                  alt: "Kegiatan olahraga siswa",
-                },
-                {
-                  image: kegiatan3,
-                  category: "Seni",
-                  title: (
-                    <>
-                      Kreativitas yang terus
-                      <br />
-                      diekspresikan
-                    </>
-                  ),
-                  text: "Seni dan budaya memberikan ruang bagi siswa untuk mengeksplorasi bakat, imajinasi, dan identitas diri.",
-                  alt: "Kegiatan seni siswa",
-                },
-                {
-                  image: Galeri,
-                  category: "Kebersamaan",
-                  title: (
-                    <>
-                      Momen kebersamaan yang
-                      <br />
-                      berkesan
-                    </>
-                  ),
-                  text: "Kegiatan bersama memperkuat relasi antar siswa dan membentuk kesan sekolah yang hangat, solid, dan inspiratif.",
-                  alt: "Kebersamaan siswa dan guru",
-                },
-                {
-                  image: Galeri2,
-                  category: "Olahraga",
-                  title: (
-                    <>
-                      Latihan bersama,
-                      <br />
-                      tumbuh bersama
-                    </>
-                  ),
-                  text: "Aktivitas olahraga membantu siswa membangun disiplin, kerja sama, dan semangat untuk terus berkembang.",
-                  alt: "Latihan olahraga siswa",
-                },
-                {
-                  image: kegiatan3,
-                  category: "Seni",
-                  title: (
-                    <>
-                      Kreativitas dan karya
-                      <br />
-                      siswa
-                    </>
-                  ),
-                  text: "Berbagai kegiatan seni membantu siswa mengekspresikan kreativitas dan mengembangkan potensi yang dimiliki.",
-                  alt: "Aktivitas seni siswa",
-                },
-                {
-                  image: Galeri,
-                  category: "Kebersamaan",
-                  title: (
-                    <>
-                      Momen kebersamaan yang
-                      <br />
-                      berkesan
-                    </>
-                  ),
-                  text: "Kebersamaan siswa, guru, dan seluruh warga sekolah menjadi bagian penting dari pengalaman belajar.",
-                  alt: "Kebersamaan sekolah",
-                },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="group relative h-[375px] w-[450px] shrink-0 overflow-hidden rounded-[22px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_45px_rgba(35,68,56,0.18)]"
-                >
-
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    sizes="(max-width: 768px) 85vw, 450px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D35] via-[#0B3D35]/20 to-transparent" />
-
-                  <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-black/25 px-4 py-2 text-[11px] font-semibold text-white backdrop-blur-md">
-                    {item.category}
-                  </div>
-
-                  <div className="absolute bottom-6 left-6 right-6">
-
-                    <h3 className="text-[24px] font-extrabold leading-[1.15] text-white">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-3 text-[12px] leading-5 text-white/80">
-                      {item.text}
+            {loadingGaleri ? (
+              <div className="flex w-max gap-5">
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="flex h-[375px] w-[82vw] max-w-[450px] shrink-0 items-center justify-center rounded-[22px] bg-[#DFF1ED]"
+                  >
+                    <p className="text-sm font-semibold text-[#2C806C]">
+                      Memuat galeri...
                     </p>
-
                   </div>
-
+                ))}
+              </div>
+            ) : errorGaleri ? (
+              <div className="flex w-max gap-5">
+                <div
+                  role="alert"
+                  className="flex h-[375px] w-[82vw] max-w-[450px] shrink-0 flex-col items-center justify-center gap-3 rounded-[22px] bg-[#F0D8D1] p-6 text-center"
+                >
+                  <p className="text-sm font-semibold text-[#163D32]">
+                    {errorGaleri}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLoadingGaleri(true);
+                      setErrorGaleri("");
+                      loadGaleri();
+                    }}
+                    className="rounded-full bg-[#163D32] px-5 py-2 text-xs font-bold text-white transition hover:bg-[#234438]"
+                  >
+                    Coba lagi
+                  </button>
                 </div>
-              ))}
+              </div>
+            ) : galeri.length === 0 ? (
+              <div className="flex w-max gap-5">
+                <div className="flex h-[375px] w-[82vw] max-w-[450px] shrink-0 items-center justify-center rounded-[22px] bg-[#DFF1ED]">
+                  <p className="text-sm font-semibold text-[#2C806C]">
+                    Belum ada galeri saat ini.
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex w-max gap-5">
+                {galeri.map((item) => (
+                  <div
+                    key={item.id}
+                    className="group relative h-[375px] w-[82vw] max-w-[450px] shrink-0 overflow-hidden rounded-[22px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_45px_rgba(35,68,56,0.18)] sm:w-[450px]"
+                  >
+                    <Image
+                      src={item.gambar}
+                      alt={item.judul}
+                      fill
+                      sizes="(max-width: 768px) 85vw, 450px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
 
-            </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D35] via-[#0B3D35]/20 to-transparent" />
 
+                    <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-black/25 px-4 py-2 text-[11px] font-semibold text-white backdrop-blur-md">
+                      Prestasi
+                    </div>
+
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <h3 className="text-[24px] font-extrabold leading-[1.15] text-white">
+                        {item.judul}
+                      </h3>
+
+                      <p className="mt-3 text-[12px] leading-5 text-white/80">
+                        {item.deskripsi}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
 
