@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaImages, FaPaperPlane } from "react-icons/fa";
@@ -20,6 +21,61 @@ export default function Home() {
   const [galeri, setGaleri] = useState([]);
   const [loadingGaleri, setLoadingGaleri] = useState(true);
   const [errorGaleri, setErrorGaleri] = useState("");
+  const [selectedGaleri, setSelectedGaleri] = useState(null);
+  const [galeriModalVisible, setGaleriModalVisible] = useState(false);
+  const galeriCloseTimeoutRef = useRef(null);
+
+  const openGaleriModal = useCallback((item) => {
+    if (galeriCloseTimeoutRef.current) {
+      clearTimeout(galeriCloseTimeoutRef.current);
+      galeriCloseTimeoutRef.current = null;
+    }
+    setSelectedGaleri(item);
+  }, []);
+
+  const closeGaleriModal = useCallback(() => {
+    setGaleriModalVisible(false);
+    if (galeriCloseTimeoutRef.current) {
+      clearTimeout(galeriCloseTimeoutRef.current);
+    }
+    galeriCloseTimeoutRef.current = setTimeout(() => {
+      setSelectedGaleri(null);
+      galeriCloseTimeoutRef.current = null;
+    }, 300);
+  }, []);
+
+  useEffect(() => {
+    if (!selectedGaleri) return;
+
+    document.body.style.overflow = "hidden";
+
+    const frame = requestAnimationFrame(() => {
+      setGaleriModalVisible(true);
+    });
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeGaleriModal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      cancelAnimationFrame(frame);
+      window.removeEventListener("keydown", handleKeyDown);
+      setGaleriModalVisible(false);
+    };
+  }, [selectedGaleri, closeGaleriModal]);
+
+  useEffect(() => {
+    return () => {
+      if (galeriCloseTimeoutRef.current) {
+        clearTimeout(galeriCloseTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const loadGaleri = async () => {
     try {
@@ -845,19 +901,40 @@ export default function Home() {
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
                 {galeri.map((item, index) => (
                   <div
                     key={item.id}
                     data-reveal
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => openGaleriModal(item)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        openGaleriModal(item);
+                      }
+                    }}
                     style={{ "--reveal-delay": `${index * 80}ms` }}
-                    className="reveal reveal-up group relative h-[375px] w-full overflow-hidden rounded-[22px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_45px_rgba(35,68,56,0.18)]"
+                    className="reveal reveal-up group relative h-[375px] w-full cursor-pointer overflow-hidden rounded-[22px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_45px_rgba(35,68,56,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2C806C]"
                   >
                     <div className="absolute inset-0 flex items-center justify-center bg-[#DFF1ED]">
                       <p className="text-sm font-semibold text-[#2C806C]">
-                        Foto prestasi
+                        Foto tidak tersedia
                       </p>
                     </div>
+
+                    {item.gambar && (
+                      <img
+                        src={item.gambar}
+                        alt={item.judul || "Foto prestasi"}
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                        }}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    )}
 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D35] via-[#0B3D35]/20 to-transparent" />
 
@@ -866,11 +943,11 @@ export default function Home() {
                     </div>
 
                     <div className="absolute bottom-6 left-6 right-6">
-                      <h3 className="text-[24px] font-extrabold leading-[1.15] text-white">
+                      <h3 className="line-clamp-2 text-[22px] font-extrabold leading-[1.2] text-white">
                         {item.judul}
                       </h3>
 
-                      <p className="mt-3 text-[12px] leading-5 text-white/80">
+                      <p className="mt-3 line-clamp-3 text-[12px] leading-5 text-white/80">
                         {item.deskripsi}
                       </p>
                     </div>
@@ -916,6 +993,73 @@ export default function Home() {
 
         </div>
       </section>
+
+
+      {/* ========================================================= */}
+      {/* MODAL DETAIL GALERI */}
+      {/* ========================================================= */}
+
+      {selectedGaleri &&
+        createPortal(
+          <div
+            className={`fixed inset-0 z-[999999] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm transition-opacity duration-300 ease-out ${
+              galeriModalVisible ? "opacity-100" : "opacity-0"
+            }`}
+            onClick={closeGaleriModal}
+          >
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label={selectedGaleri.judul || "Detail prestasi"}
+              className={`relative max-h-[90vh] w-full max-w-[640px] overflow-y-auto overflow-x-hidden rounded-[22px] bg-white shadow-2xl transition-all duration-300 ease-out ${
+                galeriModalVisible
+                  ? "translate-y-0 scale-100 opacity-100"
+                  : "translate-y-4 scale-95 opacity-0"
+              }`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={closeGaleriModal}
+                aria-label="Tutup detail prestasi"
+                className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-xl font-semibold text-white backdrop-blur-md transition hover:bg-black/60"
+              >
+                ×
+              </button>
+
+              <div className="relative flex h-[220px] w-full items-center justify-center overflow-hidden bg-[#DFF1ED] sm:h-[300px]">
+                <p className="text-sm font-semibold text-[#2C806C]">
+                  Foto tidak tersedia
+                </p>
+                {selectedGaleri.gambar && (
+                  <img
+                    src={selectedGaleri.gambar}
+                    alt={selectedGaleri.judul || "Foto prestasi"}
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                )}
+              </div>
+
+              <div className="p-6 md:p-8">
+                <span className="inline-flex items-center rounded-full bg-[#E1F2EE] px-4 py-2 text-[11px] font-semibold text-[#2C806C]">
+                  Prestasi
+                </span>
+
+                <h3 className="mt-4 text-[22px] font-extrabold leading-[1.25] text-[#163D32] md:text-[26px]">
+                  {selectedGaleri.judul}
+                </h3>
+
+                <p className="mt-4 text-[13px] leading-6 text-[#668078] md:text-[14px]">
+                  {selectedGaleri.deskripsi}
+                </p>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
 
 
       {/* ========================================================= */}
