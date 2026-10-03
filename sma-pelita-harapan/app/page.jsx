@@ -935,17 +935,17 @@ export default function Home() {
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
                         }}
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                       />
                     )}
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D35] via-[#0B3D35]/20 to-transparent" />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
 
-                    <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-black/25 px-4 py-2 text-[11px] font-semibold text-white backdrop-blur-md">
+                    <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-black/25 px-4 py-2 text-[11px] font-semibold text-white backdrop-blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                       Prestasi
                     </div>
 
-                    <div className="absolute bottom-6 left-6 right-6">
+                    <div className="absolute bottom-6 left-6 right-6 translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
                       <h3 className="line-clamp-2 text-[22px] font-extrabold leading-[1.2] text-white">
                         {item.judul}
                       </h3>
