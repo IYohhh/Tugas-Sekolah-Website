@@ -50,6 +50,10 @@ export default function Navbar() {
           id: "testimoni",
           menu: "Testimoni",
         },
+        {
+          id: "contact-us",
+          menu: "Contact",
+        },
       ];
 
       let currentMenu = "Beranda";
@@ -116,6 +120,8 @@ export default function Navbar() {
         setActiveMenu("Galeri");
       } else if (hash === "#testimoni") {
         setActiveMenu("Testimoni");
+      } else if (hash === "#contact-us") {
+        setActiveMenu("Contact");
       }
     };
 
@@ -236,6 +242,10 @@ export default function Navbar() {
     {
       name: "Testimoni",
       link: "/#testimoni",
+    },
+    {
+      name: "Contact",
+      link: "/#contact-us",
     },
   ];
 
@@ -362,6 +372,19 @@ export default function Navbar() {
                     handleSectionNavigation(
                       "testimoni",
                       "Testimoni"
+                    );
+
+                    return;
+                  }
+
+                  /* ==================== CONTACT ==================== */
+
+                  if (item.name === "Contact") {
+                    e.preventDefault();
+
+                    handleSectionNavigation(
+                      "contact-us",
+                      "Contact"
                     );
 
                     return;
@@ -596,6 +619,9 @@ export default function Navbar() {
                   } else if (item.name === "Testimoni") {
                     e.preventDefault();
                     handleSectionNavigation("testimoni", "Testimoni");
+                  } else if (item.name === "Contact") {
+                    e.preventDefault();
+                    handleSectionNavigation("contact-us", "Contact");
                   } else if (item.name === "Beranda") {
                     e.preventDefault();
                     setActiveMenu("Beranda");

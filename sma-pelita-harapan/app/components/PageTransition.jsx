@@ -220,6 +220,7 @@ function RouteLoadingBar({ pathname }) {
   const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsNavigating(true);
     const timer = setTimeout(() => setIsNavigating(false), 600);
     return () => clearTimeout(timer);
