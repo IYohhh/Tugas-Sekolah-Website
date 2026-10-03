@@ -520,10 +520,10 @@ export default function Home() {
                       href={`/detail-kegiatan?id=${item.id}`}
                       data-reveal
                       style={{ "--reveal-delay": `${index * 60}ms` }}
-                      className="reveal reveal-up group flex h-[320px] w-full flex-col overflow-hidden rounded-[20px] bg-[#F0D8D1] shadow-[0_12px_25px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
+                      className="reveal reveal-up group flex h-auto min-h-[400px] w-full flex-col overflow-hidden rounded-[20px] bg-[#F0D8D1] shadow-[0_12px_25px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
                     >
 
-                      <div className="relative h-[140px] w-full shrink-0 overflow-hidden">
+                      <div className="relative h-[180px] w-full shrink-0 overflow-hidden sm:h-[195px] md:h-[200px] lg:h-[210px]">
                         <img
                           src={item.gambar}
                           alt={item.judul}
@@ -531,7 +531,7 @@ export default function Home() {
                         />
                       </div>
 
-                      <div className="flex flex-1 flex-col p-4">
+                      <div className="flex flex-1 flex-col p-5">
 
                         <span className="inline-flex w-fit items-center rounded-full bg-[#E1F2EE] px-3 py-1 text-[10px] font-bold text-[#2C806C]">
                           {item.kategori}
@@ -545,14 +545,16 @@ export default function Home() {
                           {item.deskripsi}
                         </p>
 
-                        <p className="mt-auto pt-3 text-[11px] font-semibold text-[#668078]">
-                          {item.tanggal} · {item.lokasi}
-                        </p>
+                        <div className="mt-auto flex items-center justify-between gap-3 pt-4">
+                          <p className="min-w-0 truncate text-[10px] font-semibold text-[#668078] sm:text-[11px]">
+                            {item.tanggal} · {item.lokasi}
+                          </p>
 
-                        <span className="mt-1 inline-flex items-center gap-1.5 text-[12px] font-bold text-[#2C806C] transition-all duration-300 group-hover:gap-2.5">
-                          Lihat detail
-                          <FaArrowRight className="h-3 w-3" />
-                        </span>
+                          <span className="inline-flex shrink-0 items-center gap-1.5 text-[11px] font-bold text-[#2C806C] transition-all duration-300 group-hover:gap-2.5 sm:text-[12px]">
+                            Lihat detail
+                            <FaArrowRight className="h-3 w-3" />
+                          </span>
+                        </div>
 
                       </div>
 
@@ -1030,19 +1032,21 @@ export default function Home() {
                 ×
               </button>
 
-              <div className="relative flex h-[220px] w-full items-center justify-center overflow-hidden bg-[#DFF1ED] sm:h-[300px]">
-                <p className="text-sm font-semibold text-[#2C806C]">
-                  Foto tidak tersedia
-                </p>
-                {selectedGaleri.gambar && (
+              <div className="relative flex w-full items-center justify-center bg-[#DFF1ED]">
+                {selectedGaleri.gambar ? (
                   <img
                     src={selectedGaleri.gambar}
                     alt={selectedGaleri.judul || "Foto prestasi"}
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
+                      e.currentTarget.parentElement.classList.add("min-h-[220px]");
                     }}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="h-auto max-h-[70vh] w-full object-contain"
                   />
+                ) : (
+                  <p className="flex min-h-[220px] items-center text-sm font-semibold text-[#2C806C]">
+                    Foto tidak tersedia
+                  </p>
                 )}
               </div>
 
