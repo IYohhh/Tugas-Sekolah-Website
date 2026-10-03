@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "judul": "Masa Pengenalan Lingkungan Sekolah",
+    "deskripsi": "Kegiatan pengenalan lingkungan sekolah bagi peserta didik baru yang bertujuan membantu siswa mengenal lingkungan, tata tertib, kegiatan sekolah, serta membangun hubungan dengan warga sekolah.",
+    "tanggal": "2026-07-13",
+    "waktu": "08:00 - 15:00 WIB",
+    "lokasi": "Aula Sekolah",
+    "penyelenggara": "OSIS",
+    "kategori": "Sekolah",
+    "gambar": "https://asset.kompas.com/crops/ANgN-wPlPXYxm90QnVKuzP7I-Cg=/0x95:2000x1428/1200x800/data/photo/2022/08/14/62f8cb5ac2146.jpg"
+  },
+  {
+    "id": 2,
+    "judul": "Class Meeting",
+    "deskripsi": "Kegiatan perlombaan antar kelas yang dilaksanakan setelah ujian untuk memberikan kesempatan kepada siswa beristirahat, mengembangkan bakat, serta meningkatkan kekompakan dan sportivitas.",
+    "tanggal": "2026-09-20",
+    "waktu": "08:00 - 15:00 WIB",
+    "lokasi": "Lapangan Sekolah",
+    "penyelenggara": "OSIS",
+    "kategori": "Olahraga",
+    "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTJJTs1qxhYli2_8CJu0ucZBmyNRQ2pCrB1MIVf87BZKM--_P-CdqzSOA&s=10"
+  },
+  {
+    "id": 3,
+    "judul": "Pentas Seni Sekolah",
+    "deskripsi": "Kegiatan pentas seni sebagai wadah bagi siswa untuk menampilkan kreativitas dan bakat dalam bidang seni sekaligus memberikan pengalaman dalam bekerja sama dan tampil di depan umum.",
+    "tanggal": "2026-10-15",
+    "waktu": "09:00 - 16:00 WIB",
+    "lokasi": "Aula Sekolah",
+    "penyelenggara": "OSIS dan Ekstrakurikuler",
+    "kategori": "Seni",
+    "gambar": "https://img2.beritasatu.com/cache/investor/480x310-3/1667269804.jpeg"
+  },
+  {
+    "id": 4,
+    "judul": "Bakti Sosial",
+    "deskripsi": "Kegiatan sosial yang melibatkan siswa dalam kegiatan berbagi dan membantu masyarakat sekitar sebagai bentuk kepedulian serta pembelajaran mengenai nilai solidaritas dan tanggung jawab sosial.",
+    "tanggal": "2026-11-07",
+    "waktu": "08:00 - 13:00 WIB",
+    "lokasi": "Lingkungan Sekitar Sekolah",
+    "penyelenggara": "OSIS",
+    "kategori": "Sosial",
+    "gambar": "https://framerusercontent.com/images/E7d9UD0g2CsnY0hNwGnENZ2UPKk.webp?width=6000&height=4000"
+  },
+  {
+    "id": 5,
+    "judul": "Lomba Antar Kelas",
+    "deskripsi": "Kegiatan perlombaan antar kelas yang dirancang untuk meningkatkan kerja sama, kreativitas, kekompakan, dan sportivitas siswa melalui berbagai perlombaan.",
+    "tanggal": "2026-11-20",
+    "waktu": "08:00 - 15:00 WIB",
+    "lokasi": "Lapangan Sekolah",
+    "penyelenggara": "OSIS",
+    "kategori": "Kompetisi",
+    "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDx75UEo5YHe7U8zP_SDa4HDH5MlRvscsVQyjhVeBsgA&s=10"
+  },
+  {
+    "id": 6,
+    "judul": "Seminar Pendidikan dan Karier",
+    "deskripsi": "Kegiatan seminar yang memberikan wawasan kepada siswa mengenai pilihan pendidikan lanjutan, pengembangan keterampilan, serta persiapan menghadapi dunia kerja dan karier.",
+    "tanggal": "2026-12-05",
+    "waktu": "09:00 - 12:00 WIB",
+    "lokasi": "Aula Sekolah",
+    "penyelenggara": "Sekolah",
+    "kategori": "Pendidikan",
+    "gambar": "https://framerusercontent.com/images/HVccdetfdRkK3ovgTee5bkk4.webp?width=6000&height=4000"
+  }
+]
