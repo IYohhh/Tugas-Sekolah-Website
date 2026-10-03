@@ -24,6 +24,9 @@ export default function Home() {
   const [selectedGaleri, setSelectedGaleri] = useState(null);
   const [galeriModalVisible, setGaleriModalVisible] = useState(false);
   const galeriCloseTimeoutRef = useRef(null);
+  const [contactStatus, setContactStatus] = useState({ type: "idle", message: "" });
+  const [contactLoading, setContactLoading] = useState(false);
+  const [contactSuccess, setContactSuccess] = useState(false);
 
   const openGaleriModal = useCallback((item) => {
     if (galeriCloseTimeoutRef.current) {
@@ -1467,14 +1470,66 @@ export default function Home() {
 
 
               <form
-                onSubmit={(e) => {
+                action="https://formspree.io/f/xbglgynz"
+                method="POST"
+                onSubmit={async (e) => {
                   e.preventDefault();
+                  if (contactLoading) return;
 
-                  alert(
-                    "Pesan berhasil disiapkan. Form ini nantinya dapat disambungkan ke backend Contact Us."
-                  );
+                  const form = e.currentTarget;
+                  const data = new FormData(form);
+                  const nama = String(data.get("nama") || "").trim();
+                  const email = String(data.get("email") || "").trim();
+                  const subjek = String(data.get("subjek") || "").trim();
+                  const pesan = String(data.get("pesan") || "").trim();
+
+                  if (!nama || !email || !subjek || !pesan) {
+                    alert("Mohon lengkapi semua field terlebih dahulu.");
+                    return;
+                  }
+
+                  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    alert("Mohon masukkan alamat email yang valid.");
+                    return;
+                  }
+
+                  setContactLoading(true);
+                  setContactStatus({ type: "idle", message: "" });
+                  setContactSuccess(false);
+
+                  try {
+                    const res = await fetch(form.action, {
+                      method: "POST",
+                      body: data,
+                      headers: { Accept: "application/json" },
+                    });
+                    if (res.ok) {
+                      form.reset();
+                      setContactStatus({
+                        type: "success",
+                        message: "Pesan berhasil dikirim. Terima kasih telah menghubungi kami.",
+                      });
+                      setContactSuccess(true);
+                      alert("Pesan berhasil dikirim!");
+                      setTimeout(() => setContactSuccess(false), 1200);
+                    } else {
+                      setContactStatus({
+                        type: "error",
+                        message: "Pesan gagal dikirim. Silakan coba lagi.",
+                      });
+                      alert("Pesan gagal dikirim. Silakan coba lagi.");
+                    }
+                  } catch {
+                    setContactStatus({
+                      type: "error",
+                      message: "Pesan gagal dikirim. Silakan coba lagi.",
+                    });
+                    alert("Pesan gagal dikirim. Silakan coba lagi.");
+                  } finally {
+                    setContactLoading(false);
+                  }
                 }}
-                className="space-y-5"
+                className={`space-y-5 ${contactSuccess ? "contact-success" : ""}`}
               >
 
                 {/* NAMA */}
@@ -1592,13 +1647,25 @@ export default function Home() {
 
                 <button
                   type="submit"
-                  className="group flex w-full items-center justify-center gap-2 rounded-[14px] bg-[#EF8A7D] px-6 py-3.5 text-[13px] font-extrabold text-white shadow-[0_8px_20px_rgba(239,138,125,0.20)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E] hover:shadow-[0_12px_25px_rgba(239,138,125,0.28)]"
+                  disabled={contactLoading}
+                  className="group flex w-full items-center justify-center gap-2 rounded-[14px] bg-[#EF8A7D] px-6 py-3.5 text-[13px] font-extrabold text-white shadow-[0_8px_20px_rgba(239,138,125,0.20)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E] hover:shadow-[0_12px_25px_rgba(239,138,125,0.28)] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
                 >
-                  Kirim Pesan
+                  {contactLoading ? "Mengirim..." : "Kirim Pesan"}
 
                   <FaPaperPlane className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
 
                 </button>
+
+                {contactStatus.message && (
+                  <p
+                    role="status"
+                    className={`text-[13px] font-semibold ${
+                      contactStatus.type === "success" ? "text-[#2C806C]" : "text-[#D96A5B]"
+                    }`}
+                  >
+                    {contactStatus.message}
+                  </p>
+                )}
 
               </form>
 
