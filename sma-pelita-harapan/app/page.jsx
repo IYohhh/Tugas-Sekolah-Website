@@ -1125,15 +1125,13 @@ export default function Home() {
                     : { height: 300 }
                 }
               >
-                <p className="text-sm font-semibold text-[#2C806C]">
-                  Foto tidak tersedia
-                </p>
-                {selectedGaleri.gambar && (
+                {selectedGaleri.gambar ? (
                   <img
                     src={selectedGaleri.gambar}
                     alt={selectedGaleri.judul || "Foto prestasi"}
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
+                      e.currentTarget.parentElement.classList.add("min-h-[220px]");
                     }}
                     onLoad={(e) => {
                       const img = e.currentTarget;
@@ -1144,6 +1142,10 @@ export default function Home() {
                     }}
                     className="absolute inset-0 h-full w-full object-contain"
                   />
+                ) : (
+                  <p className="flex min-h-[220px] items-center text-sm font-semibold text-[#2C806C]">
+                    Foto tidak tersedia
+                  </p>
                 )}
               </div>
 
