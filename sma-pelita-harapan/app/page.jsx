@@ -4,8 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight, FaImages, FaPaperPlane } from "react-icons/fa";
-import TestimoniPopup from "./components/TestimoniPopup";
+import { FaArrowRight, FaImages, FaPaperPlane, FaStar } from "react-icons/fa";
 import { getGaleri, getKegiatan } from "./lib/api";
 import { initReveal } from "./lib/reveal";
 
@@ -17,12 +16,94 @@ import logo from "../assets/logo_pelita-harapan-removebg.png";
 export default function Home() {
   const [kegiatan, setKegiatan] = useState([]);
   const [loadingKegiatan, setLoadingKegiatan] = useState(true);
-  const [selectedTestimoni, setSelectedTestimoni] = useState(null);
   const [galeri, setGaleri] = useState([]);
   const [loadingGaleri, setLoadingGaleri] = useState(true);
+
+  const testimoniItems = [
+    {
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      nama: "Bapak Andi Setiawan",
+      displayName: (
+        <>
+          Bapak Andi
+          <br />
+          Setiawan
+        </>
+      ),
+      peran: "Orang Tua Siswa",
+      isi: "Lingkungan sekolah terasa nyaman dan komunikasinya dengan orang tua juga cukup baik. Saya melihat perkembangan anak menjadi lebih percaya diri.",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/women/44.jpg",
+      nama: "Ibu Rina Kartika",
+      displayName: (
+        <>
+          Ibu Rina
+          <br />
+          Kartika
+        </>
+      ),
+      peran: "Orang Tua Siswa",
+      isi: "Banyak kegiatan yang membantu siswa menemukan minat dan bakatnya. Anak saya menjadi lebih aktif mengikuti kegiatan sekolah.",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/men/46.jpg",
+      nama: "Bapak Dedi Pratama",
+      displayName: (
+        <>
+          Bapak Dedi
+          <br />
+          Pratama
+        </>
+      ),
+      peran: "Guru",
+      isi: "Kami berusaha menciptakan pembelajaran yang membuat siswa berani bertanya, mencoba hal baru, dan bekerja sama dengan teman.",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/men/52.jpg",
+      nama: "Bapak Arif Hidayat",
+      displayName: (
+        <>
+          Bapak Arif
+          <br />
+          Hidayat
+        </>
+      ),
+      peran: "Orang Tua Siswa",
+      isi: "Saya senang melihat anak mendapatkan kesempatan untuk mengikuti berbagai aktivitas di sekolah. Tidak hanya belajar, tetapi juga belajar bekerja dalam tim.",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/women/65.jpg",
+      nama: "Ibu Siti Nurhaliza",
+      displayName: (
+        <>
+          Ibu Siti
+          <br />
+          Nurhaliza
+        </>
+      ),
+      peran: "Wali Murid",
+      isi: "Komunikasi sekolah dengan orang tua cukup membantu. Informasi kegiatan dan perkembangan siswa juga disampaikan dengan jelas.",
+    },
+    {
+      image: "https://randomuser.me/api/portraits/men/68.jpg",
+      nama: "Bapak Rizky Maulana",
+      displayName: (
+        <>
+          Bapak Rizky
+          <br />
+          Maulana
+        </>
+      ),
+      peran: "Alumni",
+      isi: "Pengalaman selama sekolah memberi saya banyak kesempatan untuk mencoba hal baru dan membangun rasa percaya diri.",
+    },
+  ];
+
   const [errorGaleri, setErrorGaleri] = useState("");
   const [selectedGaleri, setSelectedGaleri] = useState(null);
   const [galeriModalVisible, setGaleriModalVisible] = useState(false);
+  const [galeriImageSize, setGaleriImageSize] = useState(null);
   const galeriCloseTimeoutRef = useRef(null);
   const [contactStatus, setContactStatus] = useState({ type: "idle", message: "" });
   const [contactLoading, setContactLoading] = useState(false);
@@ -33,6 +114,7 @@ export default function Home() {
       clearTimeout(galeriCloseTimeoutRef.current);
       galeriCloseTimeoutRef.current = null;
     }
+    setGaleriImageSize(null);
     setSelectedGaleri(item);
   }, []);
 
@@ -139,7 +221,7 @@ export default function Home() {
 
       <section
         id="beranda"
-        className="relative flex min-h-[88vh] min-h-[88svh] items-center overflow-hidden md:min-h-[92svh] lg:min-h-screen"
+        className="relative flex min-h-[70svh] items-center overflow-hidden md:min-h-[78svh] lg:min-h-[85svh]"
       >
         <Image
           src={heroImage}
@@ -153,7 +235,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A2E26]/80 via-[#0A2E26]/50 to-black/10" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent" />
 
-        <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 pb-16 pt-32 md:px-10 md:pb-20 md:pt-36 lg:px-14">
+        <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 pb-12 pt-28 md:px-10 md:pb-16 md:pt-32 lg:px-14">
           <div className="hero-enter max-w-[580px]">
 
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md md:text-sm">
@@ -520,10 +602,10 @@ export default function Home() {
                       href={`/detail-kegiatan?id=${item.id}`}
                       data-reveal
                       style={{ "--reveal-delay": `${index * 60}ms` }}
-                      className="reveal reveal-up group flex h-[320px] w-full flex-col overflow-hidden rounded-[20px] bg-[#F0D8D1] shadow-[0_12px_25px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
+                      className="reveal reveal-up group flex min-h-[420px] w-full flex-col overflow-hidden rounded-[20px] bg-[#F0D8D1] shadow-[0_12px_25px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)] sm:min-h-[430px] lg:min-h-[450px]"
                     >
 
-                      <div className="relative h-[140px] w-full shrink-0 overflow-hidden">
+                      <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden">
                         <img
                           src={item.gambar}
                           alt={item.judul}
@@ -531,7 +613,7 @@ export default function Home() {
                         />
                       </div>
 
-                      <div className="flex flex-1 flex-col p-4">
+                      <div className="flex flex-1 flex-col p-5">
 
                         <span className="inline-flex w-fit items-center rounded-full bg-[#E1F2EE] px-3 py-1 text-[10px] font-bold text-[#2C806C]">
                           {item.kategori}
@@ -541,18 +623,20 @@ export default function Home() {
                           {item.judul}
                         </h3>
 
-                        <p className="mt-2 line-clamp-2 text-[12px] leading-5 text-[#698078]">
+                        <p className="mt-2 line-clamp-3 text-[12px] leading-5 text-[#698078]">
                           {item.deskripsi}
                         </p>
 
-                        <p className="mt-auto pt-3 text-[11px] font-semibold text-[#668078]">
-                          {item.tanggal} · {item.lokasi}
-                        </p>
+                        <div className="mt-auto flex items-center justify-between gap-3 pt-4">
+                          <p className="min-w-0 truncate text-[11px] font-semibold text-[#668078]">
+                            {item.tanggal} · {item.lokasi}
+                          </p>
 
-                        <span className="mt-1 inline-flex items-center gap-1.5 text-[12px] font-bold text-[#2C806C] transition-all duration-300 group-hover:gap-2.5">
-                          Lihat detail
-                          <FaArrowRight className="h-3 w-3" />
-                        </span>
+                          <span className="inline-flex shrink-0 items-center gap-1.5 text-[12px] font-bold text-[#2C806C] transition-all duration-300 group-hover:gap-2.5">
+                            Lihat detail
+                            <FaArrowRight className="h-3 w-3" />
+                          </span>
+                        </div>
 
                       </div>
 
@@ -1030,7 +1114,17 @@ export default function Home() {
                 ×
               </button>
 
-              <div className="relative flex h-[220px] w-full items-center justify-center overflow-hidden bg-[#DFF1ED] sm:h-[300px]">
+              <div
+                className="relative flex w-full items-center justify-center overflow-hidden bg-[#DFF1ED]"
+                style={
+                  galeriImageSize
+                    ? {
+                        aspectRatio: `${galeriImageSize.width} / ${galeriImageSize.height}`,
+                        maxHeight: "65vh",
+                      }
+                    : { height: 300 }
+                }
+              >
                 <p className="text-sm font-semibold text-[#2C806C]">
                   Foto tidak tersedia
                 </p>
@@ -1041,7 +1135,14 @@ export default function Home() {
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                     }}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    onLoad={(e) => {
+                      const img = e.currentTarget;
+                      setGaleriImageSize({
+                        width: img.naturalWidth,
+                        height: img.naturalHeight,
+                      });
+                    }}
+                    className="absolute inset-0 h-full w-full object-contain"
                   />
                 )}
               </div>
@@ -1071,182 +1172,75 @@ export default function Home() {
 
       <section
         id="testimoni"
-        className="bg-[#F5FAF8] px-6 pb-28 pt-28 md:px-10 md:pb-32 md:pt-32 lg:px-14 lg:pb-36 lg:pt-36"
+        className="bg-[#F5FAF8] px-6 pb-24 pt-28 md:px-10 md:pb-28 md:pt-32 lg:px-14 lg:pb-32 lg:pt-36"
       >
         <div className="mx-auto max-w-[1200px]">
 
-          <div className="mb-16">
+          <div data-reveal className="reveal reveal-up mb-14 text-center">
 
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#3C8977]" />
               Testimoni
             </div>
 
-            <div data-reveal className="reveal reveal-left grid grid-cols-1 items-end gap-12 lg:grid-cols-[1fr_0.65fr]">
-
-              <div>
-
-                <h2 className="max-w-[700px] text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[38px] md:text-[50px] lg:text-[56px]">
-                  Cerita dari mereka
-                  <br />
-                  yang pernah bersama
-                  <br />
-                  kami.
-                </h2>
-
-              </div>
-
-              <div className="pb-2">
-
-                <p className="max-w-[470px] text-[14px] leading-6 text-[#668078] md:text-[15px]">
-                  Pengalaman belajar tidak hanya tentang pelajaran di kelas.
-                  Berikut beberapa cerita dan kesan dari siswa, orang tua,
-                  serta warga sekolah yang pernah menjadi bagian dari
-                  perjalanan SMA Pelita Harapan.
-                </p>
-
-              </div>
-
-            </div>
+            <h2 className="mx-auto max-w-[620px] text-[28px] font-extrabold leading-[1.15] tracking-tight text-[#163D32] sm:text-[34px] md:text-[40px] lg:text-[44px]">
+              We Care About Our
+              <br />
+              Customers Experience Too
+            </h2>
 
           </div>
 
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-
-            {[
-              {
-                image: "https://randomuser.me/api/portraits/men/32.jpg",
-                nama: "Bapak Andi Setiawan",
-                displayName: (
-                  <>
-                    Bapak Andi
-                    <br />
-                    Setiawan
-                  </>
-                ),
-                peran: "Orang Tua Siswa",
-                isi: "Lingkungan sekolah terasa nyaman dan komunikasinya dengan orang tua juga cukup baik. Saya melihat perkembangan anak menjadi lebih percaya diri.",
-              },
-              {
-                image: "https://randomuser.me/api/portraits/women/44.jpg",
-                nama: "Ibu Rina Kartika",
-                displayName: (
-                  <>
-                    Ibu Rina
-                    <br />
-                    Kartika
-                  </>
-                ),
-                peran: "Orang Tua Siswa",
-                isi: "Banyak kegiatan yang membantu siswa menemukan minat dan bakatnya. Anak saya menjadi lebih aktif mengikuti kegiatan sekolah.",
-              },
-              {
-                image: "https://randomuser.me/api/portraits/men/46.jpg",
-                nama: "Bapak Dedi Pratama",
-                displayName: (
-                  <>
-                    Bapak Dedi
-                    <br />
-                    Pratama
-                  </>
-                ),
-                peran: "Guru",
-                isi: "Kami berusaha menciptakan pembelajaran yang membuat siswa berani bertanya, mencoba hal baru, dan bekerja sama dengan teman.",
-              },
-              {
-                image: "https://randomuser.me/api/portraits/men/52.jpg",
-                nama: "Bapak Arif Hidayat",
-                displayName: (
-                  <>
-                    Bapak Arif
-                    <br />
-                    Hidayat
-                  </>
-                ),
-                peran: "Orang Tua Siswa",
-                isi: "Saya senang melihat anak mendapatkan kesempatan untuk mengikuti berbagai aktivitas di sekolah. Tidak hanya belajar, tetapi juga belajar bekerja dalam tim.",
-              },
-              {
-                image: "https://randomuser.me/api/portraits/women/65.jpg",
-                nama: "Ibu Siti Nurhaliza",
-                displayName: (
-                  <>
-                    Ibu Siti
-                    <br />
-                    Nurhaliza
-                  </>
-                ),
-                peran: "Wali Murid",
-                isi: "Komunikasi sekolah dengan orang tua cukup membantu. Informasi kegiatan dan perkembangan siswa juga disampaikan dengan jelas.",
-              },
-              {
-                image: "https://randomuser.me/api/portraits/men/68.jpg",
-                nama: "Bapak Rizky Maulana",
-                displayName: (
-                  <>
-                    Bapak Rizky
-                    <br />
-                    Maulana
-                  </>
-                ),
-                peran: "Alumni",
-                isi: "Pengalaman selama sekolah memberi saya banyak kesempatan untuk mencoba hal baru dan membangun rasa percaya diri.",
-              },
-            ].map((item, index) => (
+            {testimoniItems.map((item, index) => (
               <div
                 key={item.nama}
                 data-reveal
-                style={{ "--reveal-delay": `${index * 60}ms` }}
-                onClick={() => setSelectedTestimoni(item)}
-                className="reveal reveal-up group relative cursor-pointer overflow-hidden rounded-[22px] bg-[#F0D8D1] p-7 shadow-[0_12px_30px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
+                style={{
+                  "--reveal-delay": `${index * 80}ms`,
+                  "--float-delay": `${-index * 1.5}s`,
+                }}
+                className="reveal reveal-up"
               >
 
-                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-white/20 transition-transform duration-500 group-hover:scale-150" />
+                <div className="testimonial-float">
 
-                <div className="relative z-10 flex items-center gap-4">
+                  <div className="relative flex min-h-[260px] w-full flex-col overflow-visible rounded-2xl border border-[#DCE9E4] bg-white p-6 pt-16 shadow-[0_10px_30px_rgba(35,68,56,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(35,68,56,0.12)]">
 
-                  <img
-                    src={item.image}
-                    alt={item.nama}
-                    className="h-[82px] w-[82px] shrink-0 rounded-full object-cover ring-4 ring-white/70"
-                  />
+                    <img
+                      src={item.image}
+                      alt={item.nama}
+                      className="absolute -top-8 left-6 h-16 w-16 rounded-full border-[3px] border-white object-cover shadow-[0_4px_12px_rgba(35,68,56,0.15)]"
+                    />
 
-                  <div>
-
-                    <h3 className="text-[16px] font-extrabold leading-6 text-[#28628A]">
-                      {item.displayName}
-                    </h3>
-
-                    <p className="mt-1 text-[11px] font-medium text-[#668078]">
-                      {item.peran}
+                    <p className="line-clamp-4 text-[14px] leading-[1.6] text-[#668078]">
+                      &ldquo;{item.isi}&rdquo;
                     </p>
 
+                    <div className="mt-auto pt-6">
+
+                      <div className="flex items-center justify-between gap-3">
+
+                        <p className="text-[15px] font-semibold text-[#163D32]">
+                          {item.nama}
+                        </p>
+
+                        <div className="flex shrink-0 items-center gap-1 text-[#EF8A7D]">
+                          {[...Array(5)].map((_, starIndex) => (
+                            <FaStar key={starIndex} className="h-3.5 w-3.5" />
+                          ))}
+                        </div>
+
+                      </div>
+
+                      <p className="mt-1.5 text-[12px] font-medium text-[#7A8A84]">
+                        {item.peran}
+                      </p>
+
+                    </div>
+
                   </div>
-
-                </div>
-
-                <div className="relative z-10 mt-6">
-
-                  <span className="text-[30px] font-extrabold leading-none text-[#3C8977]">
-                    “
-                  </span>
-
-                  <p className="-mt-1 text-[13px] leading-6 text-[#5E716B]">
-                    {item.isi}
-                  </p>
-
-                </div>
-
-                <div className="relative z-10 mt-5 flex items-center justify-between">
-
-                  <span className="text-[11px] font-semibold text-[#3C8977]">
-                    {item.peran}
-                  </span>
-
-                  <span className="text-[12px] font-medium text-[#163D32]">
-                    Read More ›
-                  </span>
 
                 </div>
 
@@ -1709,17 +1703,6 @@ export default function Home() {
         </div>
       </section>
 
-
-      {/* ========================================================= */}
-      {/* POPUP TESTIMONI */}
-      {/* ========================================================= */}
-
-      {selectedTestimoni && (
-        <TestimoniPopup
-          testimoni={selectedTestimoni}
-          onClose={() => setSelectedTestimoni(null)}
-        />
-      )}
 
     </main>
   );
