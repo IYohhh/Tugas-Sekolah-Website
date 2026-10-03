@@ -200,7 +200,7 @@ export default function Home() {
 
       <section
         id="tentang"
-        className="bg-[#F5FAF8] px-6 py-24 md:px-10 lg:px-14 lg:py-28"
+        className="scroll-mt-[140px] bg-[#F5FAF8] px-6 py-24 md:scroll-mt-[165px] md:px-10 lg:px-14 lg:py-28"
       >
         <div className="mx-auto max-w-[1200px]">
 
@@ -214,9 +214,7 @@ export default function Home() {
             <h2 className="text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[36px] md:text-[46px] lg:text-[50px]">
               Sekolah yang menyiapkan siswa
               <br />
-              untuk belajar, berkarya, dan
-              <br />
-              berdampak.
+              untuk belajar, berkarya, dan berdampak.
             </h2>
 
             <p className="mt-5 max-w-[700px] text-[18px] font-normal leading-6 text-[#668078]">
@@ -425,7 +423,7 @@ export default function Home() {
 
       <section
         id="kegiatan-sekolah"
-        className="bg-[#F5FAF8] px-6 pb-24 pt-8 md:px-10 lg:px-14 lg:pb-28"
+        className="scroll-mt-[140px] bg-[#F5FAF8] px-6 pb-24 pt-8 md:scroll-mt-[165px] md:px-10 lg:px-14 lg:pb-28"
       >
         <div className="mx-auto max-w-[1200px]">
 
@@ -492,20 +490,20 @@ export default function Home() {
           </div>
 
 
-          <div className="relative mt-10">
+          <div className="relative mt-12">
 
             <div>
 
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-7">
 
                 {loadingKegiatan ? (
-                  <div className="flex h-[320px] w-full items-center justify-center rounded-[20px] bg-[#F0D8D1]">
+                  <div className="flex min-h-[450px] w-full items-center justify-center rounded-[20px] bg-[#F0D8D1]">
                     <p className="text-sm font-semibold text-[#2C806C]">
                       Memuat kegiatan...
                     </p>
                   </div>
                 ) : kegiatan.length === 0 ? (
-                  <div className="flex h-[320px] w-full items-center justify-center rounded-[20px] bg-[#F0D8D1]">
+                  <div className="flex min-h-[450px] w-full items-center justify-center rounded-[20px] bg-[#F0D8D1]">
                     <p className="text-sm font-semibold text-[#2C806C]">
                       Belum ada kegiatan.
                     </p>
@@ -517,10 +515,10 @@ export default function Home() {
                       href={`/detail-kegiatan?id=${item.id}`}
                       data-reveal
                       style={{ "--reveal-delay": `${index * 60}ms` }}
-                      className="reveal reveal-up group flex h-[320px] w-full flex-col overflow-hidden rounded-[20px] bg-[#F0D8D1] shadow-[0_12px_25px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
+                      className="reveal reveal-up group flex h-full min-h-[450px] w-full flex-col overflow-hidden rounded-[20px] bg-[#F0D8D1] shadow-[0_12px_25px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_22px_40px_rgba(35,68,56,0.14)]"
                     >
 
-                      <div className="relative h-[140px] w-full shrink-0 overflow-hidden">
+                      <div className="relative h-[200px] w-full shrink-0 overflow-hidden lg:h-[210px]">
                         <img
                           src={item.gambar}
                           alt={item.judul}
@@ -528,28 +526,30 @@ export default function Home() {
                         />
                       </div>
 
-                      <div className="flex flex-1 flex-col p-4">
+                      <div className="flex flex-1 flex-col p-5">
 
                         <span className="inline-flex w-fit items-center rounded-full bg-[#E1F2EE] px-3 py-1 text-[10px] font-bold text-[#2C806C]">
                           {item.kategori}
                         </span>
 
-                        <h3 className="mt-3 line-clamp-2 text-[17px] font-extrabold leading-[1.3] text-[#163D32]">
+                        <h3 className="mt-3 line-clamp-2 text-[18px] font-extrabold leading-[1.3] text-[#163D32]">
                           {item.judul}
                         </h3>
 
-                        <p className="mt-2 line-clamp-2 text-[12px] leading-5 text-[#698078]">
+                        <p className="mt-2 line-clamp-3 text-[13px] leading-5 text-[#698078]">
                           {item.deskripsi}
                         </p>
 
-                        <p className="mt-auto pt-3 text-[11px] font-semibold text-[#668078]">
-                          {item.tanggal} · {item.lokasi}
-                        </p>
+                        <div className="mt-auto flex items-center justify-between gap-3 pt-4">
+                          <p className="text-[11px] font-semibold text-[#668078]">
+                            {item.tanggal} · {item.lokasi}
+                          </p>
 
-                        <span className="mt-1 inline-flex items-center gap-1.5 text-[12px] font-bold text-[#2C806C] transition-all duration-300 group-hover:gap-2.5">
-                          Lihat detail
-                          <FaArrowRight className="h-3 w-3" />
-                        </span>
+                          <span className="inline-flex shrink-0 items-center gap-1.5 text-[12px] font-bold text-[#2C806C] transition-all duration-300 group-hover:gap-2.5">
+                            Lihat detail
+                            <FaArrowRight className="h-3 w-3" />
+                          </span>
+                        </div>
 
                       </div>
 
@@ -607,7 +607,7 @@ export default function Home() {
 
       <section
         id="ppdb"
-        className="bg-[#F5FAF8] px-6 pb-24 pt-8 md:px-10 lg:px-14 lg:pb-28"
+        className="scroll-mt-[140px] bg-[#F5FAF8] px-6 pb-24 pt-8 md:scroll-mt-[165px] md:px-10 lg:px-14 lg:pb-28"
       >
         <div className="mx-auto max-w-[1200px]">
 
@@ -800,7 +800,7 @@ export default function Home() {
 
       <section
         id="galeri"
-        className="bg-[#F5FAF8] px-6 pb-24 pt-24 md:px-10 lg:px-14 lg:pb-28"
+        className="scroll-mt-[140px] bg-[#F5FAF8] px-6 pb-24 pt-24 md:scroll-mt-[165px] md:px-10 lg:px-14 lg:pb-28"
       >
         <div className="mx-auto max-w-[1200px]">
 
@@ -858,7 +858,7 @@ export default function Home() {
           <div className="mt-14">
 
             {loadingGaleri ? (
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
@@ -871,7 +871,7 @@ export default function Home() {
                 ))}
               </div>
             ) : errorGaleri ? (
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
                 <div
                   role="alert"
                   className="flex h-[375px] w-full flex-col items-center justify-center gap-3 rounded-[22px] bg-[#F0D8D1] p-6 text-center"
@@ -893,7 +893,7 @@ export default function Home() {
                 </div>
               </div>
             ) : galeri.length === 0 ? (
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
                 <div className="flex h-[375px] w-full items-center justify-center rounded-[22px] bg-[#DFF1ED]">
                   <p className="text-sm font-semibold text-[#2C806C]">
                     Belum ada galeri saat ini.
@@ -901,7 +901,7 @@ export default function Home() {
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 xl:gap-7">
                 {galeri.map((item, index) => (
                   <div
                     key={item.id}
@@ -936,13 +936,13 @@ export default function Home() {
                       />
                     )}
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D35] via-[#0B3D35]/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D35] via-[#0B3D35]/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" />
 
-                    <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-black/25 px-4 py-2 text-[11px] font-semibold text-white backdrop-blur-md">
+                    <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-black/25 px-4 py-2 text-[11px] font-semibold text-white backdrop-blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
                       Prestasi
                     </div>
 
-                    <div className="absolute bottom-6 left-6 right-6">
+                    <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
                       <h3 className="line-clamp-2 text-[22px] font-extrabold leading-[1.2] text-white">
                         {item.judul}
                       </h3>
@@ -1011,7 +1011,7 @@ export default function Home() {
               role="dialog"
               aria-modal="true"
               aria-label={selectedGaleri.judul || "Detail prestasi"}
-              className={`relative max-h-[90vh] w-full max-w-[640px] overflow-y-auto overflow-x-hidden rounded-[22px] bg-white shadow-2xl transition-all duration-300 ease-out ${
+              className={`relative max-h-[90vh] w-full max-w-[860px] overflow-y-auto overflow-x-hidden rounded-[22px] bg-white shadow-2xl transition-all duration-300 ease-out ${
                 galeriModalVisible
                   ? "translate-y-0 scale-100 opacity-100"
                   : "translate-y-4 scale-95 opacity-0"
@@ -1027,8 +1027,8 @@ export default function Home() {
                 ×
               </button>
 
-              <div className="relative flex h-[220px] w-full items-center justify-center overflow-hidden bg-[#DFF1ED] sm:h-[300px]">
-                <p className="text-sm font-semibold text-[#2C806C]">
+              <div className="relative flex min-h-[200px] w-full items-center justify-center overflow-hidden bg-[#163D32] sm:min-h-[280px]">
+                <p className="absolute text-sm font-semibold text-[#B9DCD2]">
                   Foto tidak tersedia
                 </p>
                 {selectedGaleri.gambar && (
@@ -1038,21 +1038,21 @@ export default function Home() {
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                     }}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="relative h-auto max-h-[60vh] w-auto max-w-full object-contain"
                   />
                 )}
               </div>
 
-              <div className="p-6 md:p-8">
+              <div className="p-5 md:px-8 md:py-6">
                 <span className="inline-flex items-center rounded-full bg-[#E1F2EE] px-4 py-2 text-[11px] font-semibold text-[#2C806C]">
                   Prestasi
                 </span>
 
-                <h3 className="mt-4 text-[22px] font-extrabold leading-[1.25] text-[#163D32] md:text-[26px]">
+                <h3 className="mt-4 text-[20px] font-extrabold leading-[1.25] text-[#163D32] md:text-[24px]">
                   {selectedGaleri.judul}
                 </h3>
 
-                <p className="mt-4 text-[13px] leading-6 text-[#668078] md:text-[14px]">
+                <p className="mt-3 text-[13px] leading-6 text-[#668078] md:text-[14px]">
                   {selectedGaleri.deskripsi}
                 </p>
               </div>
@@ -1068,7 +1068,7 @@ export default function Home() {
 
       <section
         id="testimoni"
-        className="bg-[#F5FAF8] px-6 pb-28 pt-28 md:px-10 md:pb-32 md:pt-32 lg:px-14 lg:pb-36 lg:pt-36"
+        className="scroll-mt-[140px] bg-[#F5FAF8] px-6 pb-28 pt-28 md:scroll-mt-[165px] md:px-10 md:pb-32 md:pt-32 lg:px-14 lg:pb-36 lg:pt-36"
       >
         <div className="mx-auto max-w-[1200px]">
 
@@ -1262,7 +1262,7 @@ export default function Home() {
 
       <section
         id="contact-us"
-        className="bg-[#F5FAF8] px-6 pb-28 pt-16 md:px-10 md:pb-32 lg:px-14 lg:pb-36"
+        className="scroll-mt-[140px] bg-[#F5FAF8] px-6 pb-28 pt-16 md:scroll-mt-[165px] md:px-10 md:pb-32 lg:px-14 lg:pb-36"
       >
         <div className="mx-auto max-w-[1200px]">
 

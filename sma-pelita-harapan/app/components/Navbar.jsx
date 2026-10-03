@@ -50,6 +50,10 @@ export default function Navbar() {
           id: "testimoni",
           menu: "Testimoni",
         },
+        {
+          id: "contact-us",
+          menu: "Kontak",
+        },
       ];
 
       let currentMenu = "Beranda";
@@ -116,6 +120,8 @@ export default function Navbar() {
         setActiveMenu("Galeri");
       } else if (hash === "#testimoni") {
         setActiveMenu("Testimoni");
+      } else if (hash === "#contact-us" || hash === "#kontak") {
+        setActiveMenu("Kontak");
       }
     };
 
@@ -237,13 +243,17 @@ export default function Navbar() {
       name: "Testimoni",
       link: "/#testimoni",
     },
+    {
+      name: "Kontak",
+      link: "/#contact-us",
+    },
   ];
 
   /* ==================== RENDER ==================== */
 
   return (
     <>
-      <nav className="fixed left-5 right-5 top-5 z-50 flex h-[82px] items-center justify-between rounded-[24px] border border-white/40 bg-white/60 px-5 shadow-[0_10px_35px_rgba(35,68,56,0.10)] backdrop-blur-xl">
+      <nav className="fixed left-5 right-5 top-5 z-50 flex h-[86px] items-center justify-between rounded-[24px] border border-white/40 bg-white/60 px-6 shadow-[0_10px_35px_rgba(35,68,56,0.10)] backdrop-blur-xl">
 
       {/* ==================== LOGO ==================== */}
 
@@ -274,7 +284,7 @@ export default function Navbar() {
 
       {/* ==================== MENU NAVIGASI ==================== */}
 
-      <div className="hidden items-center gap-1 md:flex">
+      <div className="hidden items-center gap-2 xl:flex">
 
         {menu.map((item) => {
           const isActive =
@@ -367,6 +377,19 @@ export default function Navbar() {
                     return;
                   }
 
+                  /* ==================== KONTAK ==================== */
+
+                  if (item.name === "Kontak") {
+                    e.preventDefault();
+
+                    handleSectionNavigation(
+                      "contact-us",
+                      "Kontak"
+                    );
+
+                    return;
+                  }
+
                   /* ==================== BERANDA ==================== */
 
                   if (item.name === "Beranda") {
@@ -397,7 +420,7 @@ export default function Navbar() {
                   }
 
                 }}
-                className={`flex items-center gap-0 rounded-full px-4 py-2 text-sm font-semibold text-[#234438] transition-all duration-300 ${
+                className={`flex items-center gap-0 rounded-full px-4 py-2.5 text-sm font-semibold text-[#234438] transition-all duration-300 ${
                   isActive
                     ? "bg-[#E1F2EE]/90 shadow-sm hover:-translate-y-[1px] hover:bg-[#E1F2EE]"
                     : "hover:-translate-y-[1px] hover:bg-[#E1F2EE]/70"
@@ -546,7 +569,7 @@ export default function Navbar() {
         aria-label={isOpen ? "Tutup menu" : "Buka menu"}
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/80 text-[#234438] transition md:hidden"
+        className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/80 text-[#234438] transition xl:hidden"
       >
         {isOpen ? (
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
@@ -564,8 +587,8 @@ export default function Navbar() {
     {/* ==================== MENU MOBILE ==================== */}
 
     {isOpen && (
-      <div className="fixed left-5 right-5 top-[104px] z-40 max-h-[calc(100dvh-120px)] overflow-y-auto rounded-[20px] border border-white/40 bg-white/90 p-4 shadow-[0_12px_30px_rgba(35,68,56,0.12)] backdrop-blur-xl md:hidden">
-        <div className="flex flex-col gap-1">
+      <div className="fixed left-5 right-5 top-[112px] z-40 max-h-[calc(100dvh-128px)] overflow-y-auto rounded-[20px] border border-white/40 bg-white/90 p-4 shadow-[0_12px_30px_rgba(35,68,56,0.12)] backdrop-blur-xl xl:hidden">
+        <div className="flex flex-col gap-1.5">
           {menu.map((item) => (
             <div key={item.name}>
               <Link
@@ -596,6 +619,9 @@ export default function Navbar() {
                   } else if (item.name === "Testimoni") {
                     e.preventDefault();
                     handleSectionNavigation("testimoni", "Testimoni");
+                  } else if (item.name === "Kontak") {
+                    e.preventDefault();
+                    handleSectionNavigation("contact-us", "Kontak");
                   } else if (item.name === "Beranda") {
                     e.preventDefault();
                     setActiveMenu("Beranda");

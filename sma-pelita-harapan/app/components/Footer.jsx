@@ -10,19 +10,23 @@ export default function Footer() {
 
         {/* LOGO DAN IDENTITAS */}
         <div>
-          <Image
-            src={logo}
-            alt="Logo SMA Pelita Harapan"
-            width={80}
-            height={80}
-            className="h-[80px] w-[80px] object-contain"
-          />
-          <h2 className="mt-5 text-[18px] font-bold text-white">
-            SMA PELITA HARAPAN
-          </h2>
-          <p className="mt-1 text-[13px] font-medium text-white/80">
-            Knowledge, Faith &amp; Character
-          </p>
+          <div className="flex items-center gap-4">
+            <Image
+              src={logo}
+              alt="Logo SMA Pelita Harapan"
+              width={80}
+              height={80}
+              className="h-[80px] w-[80px] shrink-0 object-contain transition-transform duration-300 hover:scale-110"
+            />
+            <div>
+              <h2 className="text-[18px] font-bold text-white">
+                SMA PELITA HARAPAN
+              </h2>
+              <p className="mt-1 text-[13px] font-medium text-white/80">
+                Knowledge, Faith &amp; Character
+              </p>
+            </div>
+          </div>
 
           <p className="mt-5 text-[13px] font-semibold leading-6 text-white/90">
             MH Thamrin Boulevard 1100
