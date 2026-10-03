@@ -855,9 +855,21 @@ export default function Home() {
                   >
                     <div className="absolute inset-0 flex items-center justify-center bg-[#DFF1ED]">
                       <p className="text-sm font-semibold text-[#2C806C]">
-                        Foto prestasi
+                        Foto tidak tersedia
                       </p>
                     </div>
+
+                    {item.gambar && (
+                      <img
+                        src={item.gambar}
+                        alt={item.judul || "Foto prestasi"}
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                        }}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    )}
 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D35] via-[#0B3D35]/20 to-transparent" />
 
