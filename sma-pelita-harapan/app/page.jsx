@@ -24,6 +24,9 @@ export default function Home() {
   const [selectedGaleri, setSelectedGaleri] = useState(null);
   const [galeriModalVisible, setGaleriModalVisible] = useState(false);
   const galeriCloseTimeoutRef = useRef(null);
+  const [contactStatus, setContactStatus] = useState({ type: "idle", message: "" });
+  const [contactLoading, setContactLoading] = useState(false);
+  const [contactSuccess, setContactSuccess] = useState(false);
 
   const openGaleriModal = useCallback((item) => {
     if (galeriCloseTimeoutRef.current) {
@@ -932,17 +935,17 @@ export default function Home() {
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
                         }}
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                       />
                     )}
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B3D35] via-[#0B3D35]/20 to-transparent" />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
 
-                    <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-black/25 px-4 py-2 text-[11px] font-semibold text-white backdrop-blur-md">
+                    <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-black/25 px-4 py-2 text-[11px] font-semibold text-white backdrop-blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                       Prestasi
                     </div>
 
-                    <div className="absolute bottom-6 left-6 right-6">
+                    <div className="absolute bottom-6 left-6 right-6 translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
                       <h3 className="line-clamp-2 text-[22px] font-extrabold leading-[1.2] text-white">
                         {item.judul}
                       </h3>
@@ -1467,14 +1470,66 @@ export default function Home() {
 
 
               <form
-                onSubmit={(e) => {
+                action="https://formspree.io/f/xbglgynz"
+                method="POST"
+                onSubmit={async (e) => {
                   e.preventDefault();
+                  if (contactLoading) return;
 
-                  alert(
-                    "Pesan berhasil disiapkan. Form ini nantinya dapat disambungkan ke backend Contact Us."
-                  );
+                  const form = e.currentTarget;
+                  const data = new FormData(form);
+                  const nama = String(data.get("nama") || "").trim();
+                  const email = String(data.get("email") || "").trim();
+                  const subjek = String(data.get("subjek") || "").trim();
+                  const pesan = String(data.get("pesan") || "").trim();
+
+                  if (!nama || !email || !subjek || !pesan) {
+                    alert("Mohon lengkapi semua field terlebih dahulu.");
+                    return;
+                  }
+
+                  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    alert("Mohon masukkan alamat email yang valid.");
+                    return;
+                  }
+
+                  setContactLoading(true);
+                  setContactStatus({ type: "idle", message: "" });
+                  setContactSuccess(false);
+
+                  try {
+                    const res = await fetch(form.action, {
+                      method: "POST",
+                      body: data,
+                      headers: { Accept: "application/json" },
+                    });
+                    if (res.ok) {
+                      form.reset();
+                      setContactStatus({
+                        type: "success",
+                        message: "Pesan berhasil dikirim. Terima kasih telah menghubungi kami.",
+                      });
+                      setContactSuccess(true);
+                      alert("Pesan berhasil dikirim!");
+                      setTimeout(() => setContactSuccess(false), 1200);
+                    } else {
+                      setContactStatus({
+                        type: "error",
+                        message: "Pesan gagal dikirim. Silakan coba lagi.",
+                      });
+                      alert("Pesan gagal dikirim. Silakan coba lagi.");
+                    }
+                  } catch {
+                    setContactStatus({
+                      type: "error",
+                      message: "Pesan gagal dikirim. Silakan coba lagi.",
+                    });
+                    alert("Pesan gagal dikirim. Silakan coba lagi.");
+                  } finally {
+                    setContactLoading(false);
+                  }
                 }}
-                className="space-y-5"
+                className={`space-y-5 ${contactSuccess ? "contact-success" : ""}`}
               >
 
                 {/* NAMA */}
@@ -1592,13 +1647,25 @@ export default function Home() {
 
                 <button
                   type="submit"
-                  className="group flex w-full items-center justify-center gap-2 rounded-[14px] bg-[#EF8A7D] px-6 py-3.5 text-[13px] font-extrabold text-white shadow-[0_8px_20px_rgba(239,138,125,0.20)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E] hover:shadow-[0_12px_25px_rgba(239,138,125,0.28)]"
+                  disabled={contactLoading}
+                  className="group flex w-full items-center justify-center gap-2 rounded-[14px] bg-[#EF8A7D] px-6 py-3.5 text-[13px] font-extrabold text-white shadow-[0_8px_20px_rgba(239,138,125,0.20)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E] hover:shadow-[0_12px_25px_rgba(239,138,125,0.28)] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
                 >
-                  Kirim Pesan
+                  {contactLoading ? "Mengirim..." : "Kirim Pesan"}
 
                   <FaPaperPlane className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
 
                 </button>
+
+                {contactStatus.message && (
+                  <p
+                    role="status"
+                    className={`text-[13px] font-semibold ${
+                      contactStatus.type === "success" ? "text-[#2C806C]" : "text-[#D96A5B]"
+                    }`}
+                  >
+                    {contactStatus.message}
+                  </p>
+                )}
 
               </form>
 
