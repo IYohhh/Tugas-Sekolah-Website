@@ -238,7 +238,7 @@ export default function Navbar() {
     },
     {
       name: "PPDB",
-      link: "/ppdb",
+      link: "/#ppdb",
     },
     {
       name: "Galeri",
@@ -345,13 +345,10 @@ export default function Navbar() {
                   if (item.name === "PPDB") {
                     e.preventDefault();
 
-                    setActiveMenu("PPDB");
-                    setShowTentang(false);
-                    setPendingSection(null);
-
-                    if (pathname !== "/ppdb") {
-                      router.push("/ppdb");
-                    }
+                    handleSectionNavigation(
+                      "ppdb",
+                      "PPDB"
+                    );
 
                     return;
                   }
@@ -549,17 +546,14 @@ export default function Navbar() {
       {/* ==================== TOMBOL GABUNG SEKARANG ==================== */}
 
       <Link
-        href="/ppdb"
+        href="/#ppdb"
         onClick={(e) => {
           e.preventDefault();
 
-          setActiveMenu("PPDB");
-          setShowTentang(false);
-          setPendingSection(null);
-
-          if (pathname !== "/ppdb") {
-            router.push("/ppdb");
-          }
+          handleSectionNavigation(
+            "ppdb",
+            "PPDB"
+          );
         }}
         className="hidden items-center gap-2 rounded-[15px] bg-[#EF8A7D] px-5 py-3 text-sm font-bold text-white shadow-[0_6px_18px_rgba(239,138,125,0.18)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E97C6E] hover:shadow-[0_10px_25px_rgba(239,138,125,0.25)] md:inline-flex"
       >
@@ -618,25 +612,35 @@ export default function Navbar() {
 
                   if (item.name === "Kegiatan") {
                     e.preventDefault();
-                    handleSectionNavigation("kegiatan-sekolah", "Kegiatan");
+                    handleSectionNavigation(
+                      "kegiatan-sekolah",
+                      "Kegiatan"
+                    );
                   } else if (item.name === "PPDB") {
                     e.preventDefault();
-                    setActiveMenu("PPDB");
-                    setShowTentang(false);
-                    setPendingSection(null);
 
-                    if (pathname !== "/ppdb") {
-                      router.push("/ppdb");
-                    }
+                    handleSectionNavigation(
+                      "ppdb",
+                      "PPDB"
+                    );
                   } else if (item.name === "Galeri") {
                     e.preventDefault();
-                    handleSectionNavigation("galeri", "Galeri");
+                    handleSectionNavigation(
+                      "galeri",
+                      "Galeri"
+                    );
                   } else if (item.name === "Testimoni") {
                     e.preventDefault();
-                    handleSectionNavigation("testimoni", "Testimoni");
+                    handleSectionNavigation(
+                      "testimoni",
+                      "Testimoni"
+                    );
                   } else if (item.name === "Contact") {
                     e.preventDefault();
-                    handleSectionNavigation("contact-us", "Contact");
+                    handleSectionNavigation(
+                      "contact-us",
+                      "Contact"
+                    );
                   } else if (item.name === "Beranda") {
                     e.preventDefault();
                     setActiveMenu("Beranda");
@@ -645,7 +649,10 @@ export default function Navbar() {
 
                     if (pathname === "/") {
                       window.history.pushState(null, "", "/");
-                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
                     } else {
                       router.push("/");
                     }
@@ -671,9 +678,18 @@ export default function Navbar() {
                       if (pathname === "/") {
                         const element = document.getElementById("tentang");
                         if (element) {
-                          element.scrollIntoView({ behavior: "smooth", block: "start" });
-                          window.history.pushState(null, "", "/#tentang");
-                          window.dispatchEvent(new HashChangeEvent("hashchange"));
+                          element.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                          });
+                          window.history.pushState(
+                            null,
+                            "",
+                            "/#tentang"
+                          );
+                          window.dispatchEvent(
+                            new HashChangeEvent("hashchange")
+                          );
                         }
                         return;
                       }
@@ -705,16 +721,14 @@ export default function Navbar() {
           })}
 
           <Link
-            href="/ppdb"
+            href="/#ppdb"
             onClick={(e) => {
               e.preventDefault();
-              setActiveMenu("PPDB");
-              setShowTentang(false);
-              setPendingSection(null);
 
-              if (pathname !== "/ppdb") {
-                router.push("/ppdb");
-              }
+              handleSectionNavigation(
+                "ppdb",
+                "PPDB"
+              );
 
               setIsOpen(false);
             }}
