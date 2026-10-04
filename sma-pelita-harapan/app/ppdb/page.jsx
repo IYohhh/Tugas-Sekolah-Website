@@ -58,7 +58,7 @@ export default function PpdbPage() {
         <div className="mx-auto max-w-[1200px]">
           <div className="hero-enter max-w-[720px]">
             <Link
-              href="/"
+              href="/#ppdb"
               className="group inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-bold text-[#2C806C] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D2EAE4]"
             >
               <FaArrowLeft className="h-3 w-3 transition-transform duration-300 group-hover:-translate-x-0.5" />
