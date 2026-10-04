@@ -279,250 +279,227 @@ export default function Home() {
       </section>
 
 
-{/* ========================================================= */}
-{/* TENTANG SEKOLAH */}
-{/* ========================================================= */}
-
-<section
-  id="tentang"
-  className="bg-[#F5FAF8] px-6 py-24 md:px-10 lg:px-14 lg:py-28"
->
-  <div className="mx-auto max-w-[1200px]">
-
-    <div data-reveal className="reveal reveal-left mb-10 max-w-[760px]">
-
-      <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-semibold text-[#2C806C]">
-        <span className="h-1.5 w-1.5 rounded-full bg-[#2C806C]" />
-        Tentang Sekolah
-      </div>
-
-      <h2 className="text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[36px] md:text-[46px] lg:text-[50px]">
-        Sekolah yang menyiapkan siswa
-        <br />
-        untuk belajar, berkarya, dan
-        <br />
-        berdampak.
-      </h2>
-
-      <p className="mt-5 max-w-[700px] text-[18px] font-normal leading-6 text-[#668078]">
-        Sekolah SMA PELITA HARAPAN hadir sebagai ruang belajar yang
-        modern, inklusif, dan berorientasi masa depan. Di sini,
-        akademik, pengembangan diri, dan pengalaman nyata berjalan
-        beriringan untuk membentuk lulusan yang siap berkontribusi.
-      </p>
-
-    </div>
-
-
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-
       {/* ========================================================= */}
-      {/* KOLOM KIRI */}
+      {/* TENTANG SEKOLAH */}
       {/* ========================================================= */}
 
-      <div
-        data-reveal
-        className="reveal reveal-left flex flex-col gap-5"
+      <section
+        id="tentang"
+        className="bg-[#F5FAF8] px-6 py-24 md:px-10 lg:px-14 lg:py-28"
       >
+        <div className="mx-auto max-w-[1200px]">
 
-        {/* LEBIH DARI SEKADAR TEMPAT BELAJAR */}
-        <div className="rounded-[20px] border border-[#7D918B] bg-[#DFF1ED] p-7 shadow-[0_12px_30px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(35,68,56,0.10)]">
+          <div data-reveal className="reveal reveal-left mb-10 max-w-[760px]">
 
-          <h3 className="max-w-[400px] text-[30px] font-extrabold leading-[1.15] text-[#163D32] md:text-[26px]">
-            Lebih dari sekadar tempat
-            <br />
-            belajar
-          </h3>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-semibold text-[#2C806C]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#2C806C]" />
+              Tentang Sekolah
+            </div>
 
-          <p className="mt-5 text-[13px] font-normal leading-6 text-[#607870]">
-            Kami percaya bahwa pendidikan yang baik tidak hanya
-            menyampaikan ilmu, tetapi juga membangun karakter,
-            kreativitas, dan rasa percaya diri. Karena itu, setiap
-            program dirancang agar siswa bisa berkembang secara
-            akademik maupun personal.
-          </p>
+            <h2 className="text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[36px] md:text-[46px] lg:text-[50px]">
+              Sekolah yang menyiapkan siswa
+              <br />
+              untuk belajar, berkarya, dan
+              <br />
+              berdampak.
+            </h2>
 
-          <p className="mt-4 text-[13px] font-normal leading-6 text-[#607870]">
-            Dengan fasilitas yang mendukung, kegiatan sekolah yang
-            beragam, dan proses PPDB yang lebih transparan, sekolah
-            terus berupaya menjadi pilihan terbaik bagi generasi yang
-            ingin belajar dengan pengalaman lebih rapi, jelas, dan
-            relevan.
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-
-            <span className="rounded-full bg-white/80 px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
-              Kurikulum relevan
-            </span>
-
-            <span className="rounded-full bg-white/80 px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
-              Lingkungan inklusif
-            </span>
-
-            <span className="rounded-full bg-white/80 px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
-              Fokus pada masa depan
-            </span>
+            <p className="mt-5 max-w-[700px] text-[18px] font-normal leading-6 text-[#668078]">
+              Sekolah SMA PELITA HARAPAN hadir sebagai ruang belajar yang
+              modern, inklusif, dan berorientasi masa depan. Di sini,
+              akademik, pengembangan diri, dan pengalaman nyata berjalan
+              beriringan untuk membentuk lulusan yang siap berkontribusi.
+            </p>
 
           </div>
 
-        </div>
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+
+            {/* KOLOM KIRI */}
+            <div data-reveal className="reveal reveal-left flex flex-col gap-5">
+
+              <div className="rounded-[20px] border border-[#7D918B] bg-[#DFF1ED] p-7 shadow-[0_12px_30px_rgba(35,68,56,0.05)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(35,68,56,0.10)]">
+
+                <h3 className="max-w-[400px] text-[30px] font-extrabold leading-[1.15] text-[#163D32] md:text-[26px]">
+                  Lebih dari sekadar tempat
+                  <br />
+                  belajar
+                </h3>
+
+                <p className="mt-5 text-[18px] font-normal leading-6 text-[#607870]">
+                  Kami percaya bahwa pendidikan yang baik tidak hanya
+                  menyampaikan ilmu, tetapi juga membangun karakter,
+                  kreativitas, dan rasa percaya diri. Karena itu, setiap
+                  program dirancang agar siswa bisa berkembang secara
+                  akademik maupun personal.
+                </p>
+
+                <p className="mt-4 text-[18px] font-normal leading-6 text-[#607870]">
+                  Dengan fasilitas yang mendukung, kegiatan sekolah yang
+                  beragam, dan proses PPDB yang lebih transparan, sekolah
+                  terus berupaya menjadi pilihan terbaik bagi generasi yang
+                  ingin belajar dengan pengalaman lebih rapi, jelas, dan
+                  relevan.
+                </p>
+
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <span className="rounded-full bg-white/80 px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
+                    Kurikulum relevan
+                  </span>
+
+                  <span className="rounded-full bg-white/80 px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
+                    Lingkungan inklusif
+                  </span>
+
+                  <span className="rounded-full bg-white/80 px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
+                    Fokus pada masa depan
+                  </span>
+                </div>
+
+              </div>
 
 
-        {/* VISI SEKOLAH */}
-        <div className="rounded-[20px] bg-[#163D32] p-7 text-white shadow-[0_12px_30px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(35,68,56,0.15)]">
+              <div className="rounded-[20px] bg-[#163D32] p-7 text-white shadow-[0_12px_30px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(35,68,56,0.15)]">
 
-          <p className="text-[15px] font-semibold text-[#B9DCD2]">
-            Visi Sekolah
-          </p>
+                <p className="text-[15px] font-semibold text-[#B9DCD2]">
+                  Visi Sekolah
+                </p>
 
-          <h3 className="mt-4 max-w-[450px] text-[24px] font-extrabold leading-[1.3] md:text-[26px]">
-            Menjadi sekolah yang melahirkan
-            generasi inovatif, berakhlak, dan
-            siap menghadapi perubahan zaman.
-          </h3>
+                <h3 className="mt-4 max-w-[450px] text-[24px] font-extrabold leading-[1.3] md:text-[26px]">
+                  Menjadi sekolah yang melahirkan
+                  generasi inovatif, berakhlak, dan
+                  siap menghadapi perubahan zaman.
+                </h3>
 
-          <p className="mt-5 max-w-[520px] text-[15px] font-normal leading-6 text-white/75">
-            Melalui pembelajaran yang inspiratif dan ekosistem sekolah
-            yang mendukung, kami terus membangun fondasi agar setiap
-            siswa bisa tumbuh menjadi pemimpin dan pemikir masa depan.
-          </p>
+                <p className="mt-5 max-w-[520px] text-[15px] font-normal leading-6 text-white/75">
+                  Melalui pembelajaran yang inspiratif dan ekosistem sekolah
+                  yang mendukung, kami terus membangun fondasi agar setiap
+                  siswa bisa tumbuh menjadi pemimpin dan pemikir masa depan.
+                </p>
 
-        </div>
+              </div>
 
-      </div>
+            </div>
 
 
-      {/* ========================================================= */}
-      {/* KOLOM KANAN */}
-      {/* ========================================================= */}
+            {/* KOLOM KANAN */}
+            <div data-reveal className="reveal reveal-right flex flex-col gap-6">
 
-      <div
-        data-reveal
-        className="reveal reveal-right flex flex-col gap-6"
-      >
+              <div className="group relative h-[320px] overflow-hidden rounded-[20px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(35,68,56,0.16)]">
 
-        {/* FOTO RUANG BELAJAR */}
-        <div className="group relative h-[320px] overflow-hidden rounded-[20px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(35,68,56,0.16)]">
+                <Image
+                  src={kegiatan2}
+                  alt="Fasilitas dan suasana sekolah"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 600px"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
 
-          <Image
-            src={kegiatan2}
-            alt="Fasilitas dan suasana sekolah"
-            fill
-            sizes="(max-width: 1024px) 100vw, 600px"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-          />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+                <div className="absolute left-5 top-6 flex items-center">
 
-          {/* LABEL */}
-          <div className="absolute left-0 top-5 flex items-center">
+                  <div className="rounded-[28px] bg-white/15 px-5 py-2 backdrop-blur-md">
+                    <p className="text-[12px] font-bold text-[#111111]">
+                      Ruang belajar yang inspiratif
+                    </p>
+                  </div>
 
-            <div className="rounded-r-[28px] rounded-l-[28px] bg-white/15 px-5 py-2 backdrop-blur-md">
-              <p className="text-[12px] font-bold text-[#111111]">
-                Ruang belajar yang inspiratif
-              </p>
+                </div>
+
+                <div className="absolute bottom-5 left-5 right-5 transition-all duration-500 group-hover:-translate-y-1">
+
+                  <h3 className="text-[22px] font-bold leading-[1.15] text-[#17362B] md:text-[30px]">
+                    Lingkungan belajar yang nyaman dan inspiratif.
+                  </h3>
+
+                  <p className="mt-3 max-w-[550px] text-[13px] font-medium leading-5 text-[#17362B] md:text-[14px]">
+                    Ruang belajar, area diskusi, dan berbagai fasilitas
+                    sekolah dirancang untuk menciptakan suasana yang nyaman
+                    sehingga siswa dapat belajar, berdiskusi, dan
+                    mengembangkan ide dengan lebih leluasa.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div className="flex justify-center">
+
+                <div className="group w-[270px] rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
+
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
+                      01
+                    </span>
+
+                    <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
+                      120+ kegiatan
+                    <br />
+                    tahunan
+                  </h3>
+
+                  <p className="mt-3 text-[15px] leading-5 text-[#698078]">
+                    Peluang untuk mengembangkan soft skill, kreativitas,
+                    kepemimpinan, dan jaringan melalui kegiatan akademik
+                    maupun non-akademik.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+
+                <div className="group rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
+
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[18px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
+                      02
+                    </span>
+
+                    <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
+                      PPDB transparan
+                  </h3>
+
+                  <p className="mt-3 text-[15px] leading-5 text-[#698078]">
+                    Informasi pendaftaran, tahapan seleksi, dan kebutuhan
+                    calon siswa tersaji lebih jelas sehingga proses masuk
+                    sekolah terasa lebih mudah.
+                  </p>
+
+                </div>
+
+
+                <div className="group rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
+
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
+                      03
+                    </span>
+
+                    <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
+                      Lingkungan
+                    <br />
+                    kolaboratif
+                  </h3>
+
+                  <p className="mt-3 text-[15px] leading-5 text-[#698078]">
+                    Siswa didorong untuk saling berkolaborasi, berdiskusi,
+                    dan belajar bersama dalam ekosistem sekolah yang hangat
+                    dan mendukung.
+                  </p>
+
+                </div>
+
+              </div>
+
             </div>
 
           </div>
 
-
-          {/* TEXT */}
-          <div className="absolute bottom-5 left-5 right-5 transition-all duration-500 group-hover:-translate-y-1">
-
-            <h3 className="text-[22px] font-bold leading-[1.15] text-[#17362B] md:text-[30px]">
-              Lingkungan belajar yang nyaman dan inspiratif.
-            </h3>
-
-            <p className="mt-3 max-w-[550px] text-[13px] font-medium leading-5 text-[#17362B] md:text-[14px]">
-              Ruang belajar, area diskusi, dan berbagai fasilitas
-              sekolah dirancang untuk menciptakan suasana yang nyaman
-              sehingga siswa dapat belajar, berdiskusi, dan
-              mengembangkan ide dengan lebih leluasa.
-            </p>
-
-          </div>
-
         </div>
-
-
-        {/* ========================================================= */}
-        {/* CARD 01, 02, 03 */}
-        {/* ========================================================= */}
-
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-
-          {/* CARD 01 */}
-          <div className="group rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
-
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[18px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-              01
-            </span>
-
-            <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
-              PPDB transparan
-            </h3>
-
-            <p className="mt-3 text-[15px] leading-5 text-[#698078]">
-              Informasi pendaftaran, tahapan seleksi, dan kebutuhan
-              calon siswa tersaji lebih jelas sehingga proses masuk
-              sekolah terasa lebih mudah.
-            </p>
-
-          </div>
-
-
-          {/* CARD 02 */}
-          <div className="group rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
-
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-              02
-            </span>
-
-            <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
-              Lingkungan
-              <br />
-              kolaboratif
-            </h3>
-
-            <p className="mt-3 text-[15px] leading-5 text-[#698078]">
-              Siswa didorong untuk saling berkolaborasi, berdiskusi,
-              dan belajar bersama dalam ekosistem sekolah yang hangat
-              dan mendukung.
-            </p>
-
-          </div>
-
-
-          {/* CARD 03 */}
-          <div className="group sm:col-span-2 sm:mx-auto sm:w-[270px] rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
-
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-              03
-            </span>
-
-            <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
-              120+ kegiatan
-              <br />
-              tahunan
-            </h3>
-
-            <p className="mt-3 text-[15px] leading-5 text-[#698078]">
-              Peluang untuk mengembangkan soft skill, kreativitas,
-              kepemimpinan, dan jaringan melalui kegiatan akademik
-              maupun non-akademik.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
+      </section>
 
 
       {/* ========================================================= */}
@@ -1195,7 +1172,7 @@ export default function Home() {
 
       <section
         id="testimoni"
-        className="bg-[#F5FAF8] px-6 pb-24 pt-28 md:px-10 md:pb-28 md:pt-32 lg:px-14 lg:pb-32 lg:pt-36"
+        className="bg-[#F5FAF8] px-6 pb-24 pt-16 md:px-10 md:pb-28 md:pt-20 lg:px-14 lg:pb-32 lg:pt-24"
       >
         <div className="mx-auto max-w-[1200px]">
 
@@ -1207,9 +1184,7 @@ export default function Home() {
             </div>
 
             <h2 className="mx-auto max-w-[620px] text-[28px] font-extrabold leading-[1.15] tracking-tight text-[#163D32] sm:text-[34px] md:text-[40px] lg:text-[44px]">
-              Apa Kata Mereka
-              <br />
-              Tentang Kami
+              Cerita dan Pengalaman Mereka
             </h2>
 
           </div>
@@ -1370,11 +1345,16 @@ export default function Home() {
                     Alamat
                   </p>
 
-                  <p className="mt-1 text-[13px] leading-5 text-white/80">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=2500%20Bulevar%20Palem%20Raya%2C%20Lippo%20Village%2C%20Tangerang%2015810%2C%20Indonesia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block cursor-pointer text-[13px] leading-5 text-white/80 underline-offset-4 transition hover:underline"
+                  >
                     SMA Pelita Harapan
                     <br />
-                    Alamat sekolah dapat diisi di sini
-                  </p>
+                    2500 Bulevar Palem Raya, Lippo Village, Tangerang 15810, Indonesia
+                  </a>
 
                 </div>
 
@@ -1406,9 +1386,14 @@ export default function Home() {
                     Email
                   </p>
 
-                  <p className="mt-1 text-[13px] text-white/80">
-                    info@smapelitaharapan.sch.id
-                  </p>
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=admission-lv%40sph.ac.id"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block break-all text-[13px] text-white/80 underline-offset-4 transition hover:underline hover:text-white"
+                  >
+                    admission-lv@sph.ac.id
+                  </a>
 
                 </div>
 
@@ -1439,9 +1424,12 @@ export default function Home() {
                     Telepon
                   </p>
 
-                  <p className="mt-1 text-[13px] text-white/80">
-                    +62 812-0000-0000
-                  </p>
+                  <a
+                    href="tel:+62215460234"
+                    className="mt-1 block text-[13px] text-white/80 underline-offset-4 transition hover:underline hover:text-white"
+                  >
+                    +62 21 546 0234
+                  </a>
 
                 </div>
 
@@ -1606,12 +1594,14 @@ export default function Home() {
                     Subjek
                   </label>
 
+                  <div className="relative">
+
                   <select
                     id="contact-subjek"
                     name="subjek"
                     required
                     defaultValue=""
-                    className="w-full rounded-[14px] border border-[#BFD8D1] bg-[#F5FAF8] px-4 py-3 text-[13px] text-[#163D32] outline-none transition-all duration-300 focus:border-[#3C8977] focus:bg-white focus:ring-2 focus:ring-[#3C8977]/10"
+                    className="w-full appearance-none rounded-[14px] border border-[#BFD8D1] bg-[#F5FAF8] px-4 py-3 pr-12 text-[13px] text-[#163D32] outline-none transition-all duration-300 invalid:text-[#9BAFA9] focus:border-[#3C8977] focus:bg-white focus:ring-2 focus:ring-[#3C8977]/10"
                   >
                     <option value="" disabled>
                       Pilih topik
@@ -1633,6 +1623,19 @@ export default function Home() {
                       Pertanyaan Lainnya
                     </option>
                   </select>
+
+                    <svg
+                      aria-hidden="true"
+                      className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#365B50]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+
+                  </div>
 
                 </div>
 
