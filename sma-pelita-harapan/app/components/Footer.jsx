@@ -58,17 +58,7 @@ export default function Footer() {
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] text-[#234438]">
                 <FaPhoneAlt />
               </span>
-              <span>0893 9732 2839 / 0837 3283 9823</span>
-            </a>
-
-            <a
-              href="tel:02154212555"
-              className="group flex items-center gap-4 text-[14px] text-white/90 transition-colors duration-300 hover:text-white"
-            >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] text-[#234438]">
-                <FaPhoneAlt />
-              </span>
-              <span>021 5421 2555</span>
+              <span>0893 9732 2839</span>
             </a>
           </div>
         </div>
@@ -102,6 +92,10 @@ export default function Footer() {
             <Link href="/#testimoni" className="group w-fit text-[14px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5">
               <span className="border-b border-transparent pb-1 transition-all duration-300 group-hover:border-white">Testimoni</span>
             </Link>
+
+            <Link href="/kontak" className="group w-fit text-[14px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5">
+              <span className="border-b border-transparent pb-1 transition-all duration-300 group-hover:border-white">Contact Us</span>
+            </Link>
           </div>
 
           {/* SOCIAL MEDIA */}
@@ -128,7 +122,7 @@ export default function Footer() {
       {/* COPYRIGHT */}
       <div className="mx-auto mt-10 max-w-[1200px] border-t border-white/10 pt-6">
         <p className="text-[13px] font-medium text-white/80">
-          © 2026 SMA Pelita Harapan. Website resmi kampus.
+          © 2026 SMA Pelita Harapan. Website resmi sekolah.
         </p>
       </div>
 
