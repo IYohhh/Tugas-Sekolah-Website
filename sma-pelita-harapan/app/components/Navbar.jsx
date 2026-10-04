@@ -23,67 +23,72 @@ export default function Navbar() {
       return;
     }
 
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 180;
-      const sections = [
-        {
-          id: "beranda",
-          menu: "Beranda",
-        },
-        {
-          id: "tentang",
-          menu: "Tentang",
-        },
-        {
-          id: "kegiatan-sekolah",
-          menu: "Kegiatan",
-        },
-        {
-          id: "ppdb",
-          menu: "PPDB",
-        },
-        {
-          id: "galeri",
-          menu: "Galeri",
-        },
-        {
-          id: "testimoni",
-          menu: "Testimoni",
-        },
-        {
-          id: "contact-us",
-          menu: "Contact",
-        },
-      ];
+    const sections = [
+      {
+        id: "beranda",
+        menu: "Beranda",
+      },
+      {
+        id: "tentang",
+        menu: "Tentang",
+      },
+      {
+        id: "kegiatan-sekolah",
+        menu: "Kegiatan",
+      },
+      {
+        id: "ppdb",
+        menu: "PPDB",
+      },
+      {
+        id: "galeri",
+        menu: "Galeri",
+      },
+      {
+        id: "testimoni",
+        menu: "Testimoni",
+      },
+      {
+        id: "contact-us",
+        menu: "Contact",
+      },
+    ];
 
-      let currentMenu = "Beranda";
-      for (const section of sections) {
-        const element = document.getElementById(section.id);
+    const visibleSections = new Set();
 
-        if (!element) {
-          continue;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            visibleSections.add(entry.target.id);
+          } else {
+            visibleSections.delete(entry.target.id);
+          }
         }
 
-        const sectionTop =
-          element.getBoundingClientRect().top +
-          window.scrollY;
-
-        if (scrollPosition >= sectionTop) {
-          currentMenu = section.menu;
+        for (const section of sections) {
+          if (visibleSections.has(section.id)) {
+            setActiveMenu(section.menu);
+            break;
+          }
         }
+      },
+      {
+        rootMargin: "-25% 0px -60% 0px",
+        threshold: 0,
       }
+    );
 
-      setActiveMenu(currentMenu);
-    };
+    for (const section of sections) {
+      const element = document.getElementById(section.id);
 
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+      if (element) {
+        observer.observe(element);
+      }
+    }
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
     };
   }, [pathname]);
 
@@ -589,7 +594,17 @@ export default function Navbar() {
     {isOpen && (
       <div className="fixed left-5 right-5 top-[104px] z-40 max-h-[calc(100dvh-120px)] overflow-y-auto rounded-[20px] border border-white/40 bg-white/90 p-4 shadow-[0_12px_30px_rgba(35,68,56,0.12)] backdrop-blur-xl md:hidden">
         <div className="flex flex-col gap-1">
-          {menu.map((item) => (
+          {menu.map((item) => {
+            const isActive =
+              item.name === "Tentang"
+                ? isTentangPage || activeMenu === "Tentang"
+                : item.name === "Kegiatan"
+                  ? isDetailKegiatan || activeMenu === "Kegiatan"
+                  : item.name === "PPDB"
+                    ? isPpdbPage || activeMenu === "PPDB"
+                    : activeMenu === item.name;
+
+            return (
             <div key={item.name}>
               <Link
                 href={item.link}
@@ -638,7 +653,7 @@ export default function Navbar() {
 
                   setIsOpen(false);
                 }}
-                className="flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-[#234438] transition hover:bg-[#E1F2EE]/80"
+                className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-[#234438] transition hover:bg-[#E1F2EE]/80 ${isActive ? "bg-[#E1F2EE]/90 shadow-sm" : ""}`}
               >
                 <span>{item.name}</span>
               </Link>
@@ -686,7 +701,8 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-          ))}
+            );
+          })}
 
           <Link
             href="/ppdb"

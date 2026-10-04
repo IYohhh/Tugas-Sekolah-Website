@@ -398,11 +398,9 @@ export default function Home() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
 
-                <div className="absolute left-0 top-5 flex items-center">
+                <div className="absolute left-5 top-6 flex items-center">
 
-                  <span className="relative z-20 h-4 w-4 shrink-0 rounded-full bg-white shadow-[0_3px_10px_rgba(0,0,0,0.08)]" />
-
-                  <div className="-ml-1 rounded-r-[28px] rounded-l-[28px] bg-white/15 px-5 py-2 backdrop-blur-md">
+                  <div className="rounded-[28px] bg-white/15 px-5 py-2 backdrop-blur-md">
                     <p className="text-[12px] font-bold text-[#111111]">
                       Ruang belajar yang inspiratif
                     </p>
@@ -428,16 +426,41 @@ export default function Home() {
               </div>
 
 
+              <div className="flex justify-center">
+
+                <div className="group w-[270px] rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
+
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
+                      01
+                    </span>
+
+                    <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
+                      120+ kegiatan
+                    <br />
+                    tahunan
+                  </h3>
+
+                  <p className="mt-3 text-[15px] leading-5 text-[#698078]">
+                    Peluang untuk mengembangkan soft skill, kreativitas,
+                    kepemimpinan, dan jaringan melalui kegiatan akademik
+                    maupun non-akademik.
+                  </p>
+
+                </div>
+
+              </div>
+
+
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
 
                 <div className="group rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
 
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[18px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                    03
-                  </span>
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[18px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
+                      02
+                    </span>
 
-                  <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
-                    PPDB transparan
+                    <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
+                      PPDB transparan
                   </h3>
 
                   <p className="mt-3 text-[15px] leading-5 text-[#698078]">
@@ -451,12 +474,12 @@ export default function Home() {
 
                 <div className="group rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
 
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                    04
-                  </span>
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
+                      03
+                    </span>
 
-                  <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
-                    Lingkungan
+                    <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
+                      Lingkungan
                     <br />
                     kolaboratif
                   </h3>
@@ -465,31 +488,6 @@ export default function Home() {
                     Siswa didorong untuk saling berkolaborasi, berdiskusi,
                     dan belajar bersama dalam ekosistem sekolah yang hangat
                     dan mendukung.
-                  </p>
-
-                </div>
-
-              </div>
-
-
-              <div className="flex justify-center">
-
-                <div className="group w-[270px] rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
-
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                    02
-                  </span>
-
-                  <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
-                    120+ kegiatan
-                    <br />
-                    tahunan
-                  </h3>
-
-                  <p className="mt-3 text-[15px] leading-5 text-[#698078]">
-                    Peluang untuk mengembangkan soft skill, kreativitas,
-                    kepemimpinan, dan jaringan melalui kegiatan akademik
-                    maupun non-akademik.
                   </p>
 
                 </div>
@@ -1174,7 +1172,7 @@ export default function Home() {
 
       <section
         id="testimoni"
-        className="bg-[#F5FAF8] px-6 pb-24 pt-28 md:px-10 md:pb-28 md:pt-32 lg:px-14 lg:pb-32 lg:pt-36"
+        className="bg-[#F5FAF8] px-6 pb-24 pt-16 md:px-10 md:pb-28 md:pt-20 lg:px-14 lg:pb-32 lg:pt-24"
       >
         <div className="mx-auto max-w-[1200px]">
 
@@ -1186,9 +1184,7 @@ export default function Home() {
             </div>
 
             <h2 className="mx-auto max-w-[620px] text-[28px] font-extrabold leading-[1.15] tracking-tight text-[#163D32] sm:text-[34px] md:text-[40px] lg:text-[44px]">
-              We Care About Our
-              <br />
-              Customers Experience Too
+              Cerita dan Pengalaman Mereka
             </h2>
 
           </div>
@@ -1349,11 +1345,16 @@ export default function Home() {
                     Alamat
                   </p>
 
-                  <p className="mt-1 text-[13px] leading-5 text-white/80">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=2500%20Bulevar%20Palem%20Raya%2C%20Lippo%20Village%2C%20Tangerang%2015810%2C%20Indonesia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block cursor-pointer text-[13px] leading-5 text-white/80 underline-offset-4 transition hover:underline"
+                  >
                     SMA Pelita Harapan
                     <br />
-                    Alamat sekolah dapat diisi di sini
-                  </p>
+                    2500 Bulevar Palem Raya, Lippo Village, Tangerang 15810, Indonesia
+                  </a>
 
                 </div>
 
@@ -1385,9 +1386,14 @@ export default function Home() {
                     Email
                   </p>
 
-                  <p className="mt-1 text-[13px] text-white/80">
-                    info@smapelitaharapan.sch.id
-                  </p>
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=admission-lv%40sph.ac.id"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block break-all text-[13px] text-white/80 underline-offset-4 transition hover:underline hover:text-white"
+                  >
+                    admission-lv@sph.ac.id
+                  </a>
 
                 </div>
 
@@ -1418,9 +1424,12 @@ export default function Home() {
                     Telepon
                   </p>
 
-                  <p className="mt-1 text-[13px] text-white/80">
-                    +62 812-0000-0000
-                  </p>
+                  <a
+                    href="tel:+62215460234"
+                    className="mt-1 block text-[13px] text-white/80 underline-offset-4 transition hover:underline hover:text-white"
+                  >
+                    +62 21 546 0234
+                  </a>
 
                 </div>
 
@@ -1585,12 +1594,14 @@ export default function Home() {
                     Subjek
                   </label>
 
+                  <div className="relative">
+
                   <select
                     id="contact-subjek"
                     name="subjek"
                     required
                     defaultValue=""
-                    className="w-full rounded-[14px] border border-[#BFD8D1] bg-[#F5FAF8] px-4 py-3 text-[13px] text-[#163D32] outline-none transition-all duration-300 focus:border-[#3C8977] focus:bg-white focus:ring-2 focus:ring-[#3C8977]/10"
+                    className="w-full appearance-none rounded-[14px] border border-[#BFD8D1] bg-[#F5FAF8] px-4 py-3 pr-12 text-[13px] text-[#163D32] outline-none transition-all duration-300 invalid:text-[#9BAFA9] focus:border-[#3C8977] focus:bg-white focus:ring-2 focus:ring-[#3C8977]/10"
                   >
                     <option value="" disabled>
                       Pilih topik
@@ -1612,6 +1623,19 @@ export default function Home() {
                       Pertanyaan Lainnya
                     </option>
                   </select>
+
+                    <svg
+                      aria-hidden="true"
+                      className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#365B50]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+
+                  </div>
 
                 </div>
 

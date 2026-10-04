@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebookF, FaInstagram, FaYoutube, FaTiktok, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import logo from "../../assets/logo_pelita-harapan-removebg.png";
 
 export default function Footer() {
@@ -25,9 +25,9 @@ export default function Footer() {
           </p>
 
           <p className="mt-5 text-[13px] font-semibold leading-6 text-white/90">
-            MH Thamrin Boulevard 1100
+            2500 Bulevar Palem Raya
             <br />
-            Lippo Village, Tangerang 15811
+            Lippo Village, Tangerang 15810
             <br />
             Indonesia
           </p>
@@ -40,35 +40,27 @@ export default function Footer() {
 
           <div className="mt-6 space-y-4">
             <a
-              href="mailto:admission@sph.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=admission-lv%40sph.ac.id"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center gap-4 text-[14px] text-white/90 transition-colors duration-300 hover:text-white"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E1F2EE] text-[16px] text-[#234438]">
                 <FaEnvelope />
               </span>
               <span className="underline decoration-white/50 underline-offset-4 transition-all duration-300 group-hover:decoration-white break-all">
-                admission@sph.com
+                admission-lv@sph.ac.id
               </span>
             </a>
 
             <a
-              href="tel:089397322839"
+              href="tel:+62215460234"
               className="group flex items-center gap-4 text-[14px] text-white/90 transition-colors duration-300 hover:text-white"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] text-[#234438]">
                 <FaPhoneAlt />
               </span>
-              <span>0893 9732 2839 / 0837 3283 9823</span>
-            </a>
-
-            <a
-              href="tel:02154212555"
-              className="group flex items-center gap-4 text-[14px] text-white/90 transition-colors duration-300 hover:text-white"
-            >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] text-[#234438]">
-                <FaPhoneAlt />
-              </span>
-              <span>021 5421 2555</span>
+              <span>+62 21 546 0234</span>
             </a>
           </div>
         </div>
@@ -106,20 +98,20 @@ export default function Footer() {
 
           {/* SOCIAL MEDIA */}
           <div className="mt-7 flex items-center gap-3">
-            <a href="#" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[16px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
+            <a href="https://www.facebook.com/sphsentulcity/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[16px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
               <FaFacebookF />
             </a>
 
-            <a href="#" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[17px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
+            <a href="https://www.instagram.com/sphlippovillage/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[17px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
               <FaInstagram />
             </a>
 
-            <a href="#" aria-label="YouTube" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[17px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
+            <a href="https://www.youtube.com/sphinternational" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[17px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
               <FaYoutube />
             </a>
 
-            <a href="#" aria-label="TikTok" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[16px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
-              <FaTiktok />
+            <a href="https://wa.me/6288215460234" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[16px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
+              <FaWhatsapp />
             </a>
           </div>
         </div>
@@ -128,7 +120,7 @@ export default function Footer() {
       {/* COPYRIGHT */}
       <div className="mx-auto mt-10 max-w-[1200px] border-t border-white/10 pt-6">
         <p className="text-[13px] font-medium text-white/80">
-          © 2026 SMA Pelita Harapan. Website resmi kampus.
+          © 2026 SMA Pelita Harapan. Website resmi sekolah.
         </p>
       </div>
 
