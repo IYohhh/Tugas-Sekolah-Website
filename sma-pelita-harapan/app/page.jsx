@@ -327,7 +327,7 @@ export default function Home() {
                   belajar
                 </h3>
 
-                <p className="mt-5 text-[18px] font-normal leading-6 text-[#607870]">
+                <p className="mt-5 text-[13px] font-normal leading-6 text-[#607870]">
                   Kami percaya bahwa pendidikan yang baik tidak hanya
                   menyampaikan ilmu, tetapi juga membangun karakter,
                   kreativitas, dan rasa percaya diri. Karena itu, setiap
@@ -335,7 +335,7 @@ export default function Home() {
                   akademik maupun personal.
                 </p>
 
-                <p className="mt-4 text-[18px] font-normal leading-6 text-[#607870]">
+                <p className="mt-4 text-[13px] font-normal leading-6 text-[#607870]">
                   Dengan fasilitas yang mendukung, kegiatan sekolah yang
                   beragam, dan proses PPDB yang lebih transparan, sekolah
                   terus berupaya menjadi pilihan terbaik bagi generasi yang
@@ -383,57 +383,56 @@ export default function Home() {
             </div>
 
 
-            {/* KOLOM KANAN */}
-            <div data-reveal className="reveal reveal-right flex flex-col gap-6">
+        {/* KOLOM KANAN */}
+                  <div data-reveal className="reveal reveal-right flex flex-col gap-6">
 
-              <div className="group relative h-[320px] overflow-hidden rounded-[20px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(35,68,56,0.16)]">
+                    <div className="group relative h-[320px] overflow-hidden rounded-[20px] shadow-[0_15px_35px_rgba(35,68,56,0.10)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(35,68,56,0.16)]">
 
-                <Image
-                  src={kegiatan2}
-                  alt="Fasilitas dan suasana sekolah"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 600px"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
+                      <Image
+                        src={kegiatan2}
+                        alt="Fasilitas dan suasana sekolah"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 600px"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent" />
 
-                <div className="absolute left-0 top-5 flex items-center">
+                      {/* LABEL */}
+                      <div className="absolute left-0 top-5 flex items-center">
+                        <div className="rounded-r-[28px] rounded-l-[28px] bg-white/15 px-5 py-2 backdrop-blur-md">
+                          <p className="text-[12px] font-bold text-[#111111]">
+                            Ruang belajar yang inspiratif
+                          </p>
+                        </div>
+                      </div>
 
-                  <span className="relative z-20 h-4 w-4 shrink-0 rounded-full bg-white shadow-[0_3px_10px_rgba(0,0,0,0.08)]" />
+                      {/* TEXT */}
+                      <div className="absolute bottom-5 left-5 right-5 transition-all duration-500 group-hover:-translate-y-1">
 
-                  <div className="-ml-1 rounded-r-[28px] rounded-l-[28px] bg-white/15 px-5 py-2 backdrop-blur-md">
-                    <p className="text-[12px] font-bold text-[#111111]">
-                      Ruang belajar yang inspiratif
-                    </p>
+                        <h3 className="text-[22px] font-bold leading-[1.15] text-[#17362B] md:text-[30px]">
+                          Lingkungan belajar yang nyaman dan inspiratif.
+                        </h3>
+
+                        <p className="mt-3 max-w-[550px] text-[13px] font-medium leading-5 text-[#17362B] md:text-[14px]">
+                          Ruang belajar, area diskusi, dan berbagai fasilitas
+                          sekolah dirancang untuk menciptakan suasana yang nyaman
+                          sehingga siswa dapat belajar, berdiskusi, dan
+                          mengembangkan ide dengan lebih leluasa.
+                        </p>
+
+                      </div>
+
+                    </div>
+
                   </div>
-
-                </div>
-
-                <div className="absolute bottom-5 left-5 right-5 transition-all duration-500 group-hover:-translate-y-1">
-
-                  <h3 className="text-[22px] font-bold leading-[1.15] text-[#17362B] md:text-[30px]">
-                    Lingkungan belajar yang nyaman dan inspiratif.
-                  </h3>
-
-                  <p className="mt-3 max-w-[550px] text-[13px] font-medium leading-5 text-[#17362B] md:text-[14px]">
-                    Ruang belajar, area diskusi, dan berbagai fasilitas
-                    sekolah dirancang untuk menciptakan suasana yang nyaman
-                    sehingga siswa dapat belajar, berdiskusi, dan
-                    mengembangkan ide dengan lebih leluasa.
-                  </p>
-
-                </div>
-
-              </div>
-
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
 
                 <div className="group rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
 
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[18px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                    03
+                    01
                   </span>
 
                   <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
@@ -452,7 +451,7 @@ export default function Home() {
                 <div className="group rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
 
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                    04
+                    02
                   </span>
 
                   <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
@@ -477,7 +476,7 @@ export default function Home() {
                 <div className="group w-[270px] rounded-[20px] bg-[#F0D8D1] p-6 shadow-[0_12px_25px_rgba(35,68,56,0.06)] transition-all duration-500 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-[0_20px_35px_rgba(35,68,56,0.14)]">
 
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#E1F2EE] text-[15px] font-bold text-[#2C806C] transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                    02
+                    03
                   </span>
 
                   <h3 className="mt-4 text-[17px] font-extrabold leading-6 text-[#17362B]">
@@ -496,7 +495,7 @@ export default function Home() {
 
               </div>
 
-            </div>
+
 
           </div>
 
@@ -1186,9 +1185,9 @@ export default function Home() {
             </div>
 
             <h2 className="mx-auto max-w-[620px] text-[28px] font-extrabold leading-[1.15] tracking-tight text-[#163D32] sm:text-[34px] md:text-[40px] lg:text-[44px]">
-              We Care About Our
+              Apa Kata Mereka
               <br />
-              Customers Experience Too
+              Tentang Kami
             </h2>
 
           </div>
