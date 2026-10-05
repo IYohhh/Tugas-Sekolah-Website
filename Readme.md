@@ -4,7 +4,7 @@ Website profil **SMA Pelita Harapan** yang dibuat sebagai media informasi digita
 
 Website dirancang dengan tampilan modern, bersih, informatif, dan responsif sehingga dapat digunakan oleh calon siswa, siswa, orang tua/wali, guru, maupun masyarakat umum.
 
----
+----
 
 ## 📌 Daftar Isi
 
