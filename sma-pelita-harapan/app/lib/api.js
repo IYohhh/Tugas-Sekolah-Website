@@ -15,7 +15,7 @@ function normalizeList(json) {
 }
 
 export async function getKegiatan() {
-  const response = await fetch(`${API_BASE_URL}/api/kegiatans`, {
+  const response = await fetch(`${API_BASE_URL}/api/kegiatan`, {
 
     cache: "no-store",
   });
