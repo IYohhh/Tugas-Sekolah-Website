@@ -204,20 +204,22 @@ export default function PpdbPage() {
               </p>
               <div className="mt-6 space-y-3">
                 <a
-                  href="mailto:info@smapelitaharapan.sch.id"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=admission-lv%40sph.ac.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 rounded-[14px] bg-white/10 px-4 py-3 text-[13px] font-semibold text-white transition hover:bg-white/15"
                 >
                   <FaEnvelope className="h-4 w-4 shrink-0 text-[#B9DCD2]" />
                   <span className="break-all">
-                    info@smapelitaharapan.sch.id
+                    SMA Pelita Harapan
                   </span>
                 </a>
                 <a
-                  href="tel:+6281200000000"
+                  href="tel:+62215460234"
                   className="flex items-center gap-3 rounded-[14px] bg-white/10 px-4 py-3 text-[13px] font-semibold text-white transition hover:bg-white/15"
                 >
                   <FaPhoneAlt className="h-4 w-4 shrink-0 text-[#B9DCD2]" />
-                  +62 812-0000-0000
+                  +62 21 546 0234
                 </a>
               </div>
             </div>
