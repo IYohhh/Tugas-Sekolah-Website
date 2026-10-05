@@ -24,13 +24,16 @@ export default function Footer() {
             Knowledge, Faith &amp; Character
           </p>
 
-          <p className="mt-5 text-[13px] font-semibold leading-6 text-white/90">
-            2500 Bulevar Palem Raya
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=2500%20Bulevar%20Palem%20Raya%2C%20Lippo%20Village%2C%20Tangerang%2015810%2C%20Indonesia"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 block text-[13px] font-semibold leading-6 text-white/90 underline-offset-4 transition hover:underline"
+          >
+            Lippo Village, Jl. Boulevard Palem Raya No. 2500,
             <br />
-            Lippo Village, Tangerang 15810
-            <br />
-            Indonesia
-          </p>
+            Kelapa Dua, Tangerang, Banten 15810
+          </a>
         </div>
 
         {/* CONTACT US */}
@@ -49,7 +52,7 @@ export default function Footer() {
                 <FaEnvelope />
               </span>
               <span className="underline decoration-white/50 underline-offset-4 transition-all duration-300 group-hover:decoration-white break-all">
-                admission-lv@sph.ac.id
+                SMA Pelita Harapan
               </span>
             </a>
 
@@ -94,34 +97,38 @@ export default function Footer() {
             <Link href="/#testimoni" className="group w-fit text-[14px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5">
               <span className="border-b border-transparent pb-1 transition-all duration-300 group-hover:border-white">Testimoni</span>
             </Link>
-          </div>
 
-          {/* SOCIAL MEDIA */}
-          <div className="mt-7 flex items-center gap-3">
-            <a href="https://www.facebook.com/sphsentulcity/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[16px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
-              <FaFacebookF />
-            </a>
-
-            <a href="https://www.instagram.com/sphlippovillage/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[17px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
-              <FaInstagram />
-            </a>
-
-            <a href="https://www.youtube.com/sphinternational" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[17px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
-              <FaYoutube />
-            </a>
-
-            <a href="https://wa.me/6288215460234" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[16px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
-              <FaWhatsapp />
-            </a>
+            <Link href="/#contact-us" className="group w-fit text-[14px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5">
+              <span className="border-b border-transparent pb-1 transition-all duration-300 group-hover:border-white">Contact</span>
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* COPYRIGHT */}
-      <div className="mx-auto mt-10 max-w-[1200px] border-t border-white/10 pt-6">
+      {/* COPYRIGHT + SOCIAL MEDIA */}
+      <div className="mx-auto mt-10 flex max-w-[1200px] flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-[13px] font-medium text-white/80">
           © 2026 SMA Pelita Harapan. Website resmi sekolah.
         </p>
+
+        {/* SOCIAL MEDIA */}
+        <div className="flex items-center gap-3">
+          <a href="https://www.facebook.com/sphsentulcity/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[16px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
+            <FaFacebookF />
+          </a>
+
+          <a href="https://www.instagram.com/sphlippovillage/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[17px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
+            <FaInstagram />
+          </a>
+
+          <a href="https://www.youtube.com/sphinternational" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[17px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
+            <FaYoutube />
+          </a>
+
+          <a href="https://wa.me/6288215460234" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[16px] text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E1F2EE] hover:text-[#234438]">
+            <FaWhatsapp />
+          </a>
+        </div>
       </div>
 
     </footer>
