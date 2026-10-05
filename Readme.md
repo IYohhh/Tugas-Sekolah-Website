@@ -1,4 +1,4 @@
-#  SMA Pelita Harapan
+# 🏫 SMA Pelita Harapan
 
 Website profil **SMA Pelita Harapan** yang dibuat sebagai media informasi digital untuk memperkenalkan sekolah, program pendidikan, kegiatan siswa, PPDB, galeri, dan informasi kontak.
 
@@ -8,22 +8,27 @@ Website dirancang dengan tampilan modern, bersih, informatif, dan responsif sehi
 
 ## 📌 Daftar Isi
 
-- [Tentang Project](#-tentang-project)
-- [Tujuan Project](#-tujuan-project)
-- [Fitur Website](#-fitur-website)
-- [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
-- [Struktur Project](#-struktur-project)
-- [Cara Mendapatkan Project](#-cara-mendapatkan-project)
-- [Cara Menjalankan Website](#-cara-menjalankan-website)
-- [Tata Cara Menggunakan Website](#-tata-cara-menggunakan-website)
-- [Tata Cara Mengubah Isi Website](#-tata-cara-mengubah-isi-website)
-- [Tata Cara Mengganti Gambar](#-tata-cara-mengganti-gambar)
-- [Tata Cara Mengubah Warna dan Tampilan](#-tata-cara-mengubah-warna-dan-tampilan)
-- [Responsive Website](#-responsive-website)
-- [Troubleshooting](#-troubleshooting)
-- [Upload ke GitHub](#-upload-ke-github)
-- [Pengembangan Selanjutnya](#-pengembangan-selanjutnya)
-- [Lisensi](#-lisensi)
+* [Tentang Project](#-tentang-project)
+* [Tujuan Project](#-tujuan-project)
+* [Fitur Website](#-fitur-website)
+* [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
+* [Dokumentasi Teknis](#-dokumentasi-teknis)
+* [Struktur Project](#-struktur-project)
+* [Cara Mendapatkan Project](#-cara-mendapatkan-project)
+* [Cara Menjalankan Website](#-cara-menjalankan-website)
+* [Tata Cara Menggunakan Website](#-tata-cara-menggunakan-website)
+* [Tata Cara Mengubah Isi Website](#-tata-cara-mengubah-isi-website)
+* [Tata Cara Mengganti Gambar](#-tata-cara-mengganti-gambar)
+* [Tata Cara Mengubah Warna dan Tampilan](#-tata-cara-mengubah-warna-dan-tampilan)
+* [Tata Cara Mengubah Font](#-tata-cara-mengubah-font)
+* [Responsive Website](#-responsive-website)
+* [Troubleshooting](#-troubleshooting)
+* [Upload ke GitHub](#-upload-project-ke-github)
+* [Cara Update Project](#-cara-update-project)
+* [Alur Penggunaan Website](#-alur-penggunaan-website)
+* [Pengembangan Selanjutnya](#-pengembangan-selanjutnya)
+* [Target Pengguna](#-target-pengguna)
+* [Lisensi](#-lisensi)
 
 ---
 
@@ -33,12 +38,12 @@ Website SMA Pelita Harapan merupakan website profil sekolah yang digunakan sebag
 
 Website ini menyediakan berbagai informasi seperti:
 
-- Profil sekolah
-- Program pendidikan
-- Kegiatan siswa
-- Informasi PPDB
-- Galeri kegiatan
-- Informasi kontak sekolah
+* Profil sekolah
+* Program pendidikan
+* Kegiatan siswa
+* Informasi PPDB
+* Galeri kegiatan
+* Informasi kontak sekolah
 
 Website dibuat agar informasi sekolah dapat disampaikan secara lebih menarik, terstruktur, dan mudah digunakan.
 
@@ -65,12 +70,12 @@ Navbar digunakan sebagai menu navigasi utama.
 
 Menu yang tersedia:
 
-- **Beranda**
-- **Tentang**
-- **Kegiatan**
-- **PPDB**
-- **Galeri**
-- **Gabung Sekarang**
+* **Beranda**
+* **Tentang**
+* **Kegiatan**
+* **PPDB**
+* **Galeri**
+* **Gabung Sekarang**
 
 Pengguna dapat memilih menu untuk menuju bagian atau halaman yang diinginkan.
 
@@ -80,30 +85,30 @@ Hero section merupakan bagian utama yang pertama kali dilihat pengguna.
 
 Berisi:
 
-- Judul utama sekolah
-- Deskripsi singkat
-- Tombol informasi
-- Tombol pendaftaran
-- Foto kegiatan siswa
+* Judul utama sekolah
+* Deskripsi singkat
+* Tombol informasi
+* Tombol pendaftaran
+* Foto kegiatan siswa
 
 ### 3. Tentang Sekolah
 
 Bagian ini memberikan informasi mengenai sekolah, seperti:
 
-- Gambaran sekolah
-- Sistem pembelajaran
-- Program pendidikan
-- Keunggulan sekolah
-- Fasilitas dan kegiatan
+* Gambaran sekolah
+* Sistem pembelajaran
+* Program pendidikan
+* Keunggulan sekolah
+* Fasilitas dan kegiatan
 
 ### 4. Kegiatan Sekolah
 
 Bagian kegiatan menampilkan berbagai aktivitas siswa, seperti:
 
-- Olimpiade & prestasi
-- Seni & kreativitas
-- Olahraga & kesehatan
-- Sosial & leadership
+* Olimpiade & prestasi
+* Seni & kreativitas
+* Olahraga & kesehatan
+* Sosial & leadership
 
 ### 5. PPDB
 
@@ -111,22 +116,22 @@ Bagian PPDB memberikan informasi mengenai **Penerimaan Peserta Didik Baru**.
 
 Informasi yang ditampilkan:
 
-- Informasi pendaftaran
-- Alur pendaftaran
-- Daftar akun
-- Unggah berkas
-- Verifikasi dan seleksi
-- Informasi penting PPDB
+* Informasi pendaftaran
+* Alur pendaftaran
+* Daftar akun
+* Unggah berkas
+* Verifikasi dan seleksi
+* Informasi penting PPDB
 
 ### 6. Galeri
 
 Galeri digunakan untuk menampilkan dokumentasi aktivitas sekolah, seperti:
 
-- Kegiatan pembelajaran
-- Latihan
-- Kreativitas siswa
-- Kebersamaan siswa
-- Kegiatan sekolah lainnya
+* Kegiatan pembelajaran
+* Latihan
+* Kreativitas siswa
+* Kebersamaan siswa
+* Kegiatan sekolah lainnya
 
 ### 7. Contact Us
 
@@ -134,36 +139,110 @@ Bagian Contact Us berisi informasi yang dapat digunakan untuk menghubungi sekola
 
 Contohnya:
 
-- Email
-- Nomor telepon
-- WhatsApp
-- Alamat sekolah
+* Email
+* Nomor telepon
+* WhatsApp
+* Alamat sekolah
 
 ### 8. Footer
 
 Footer berisi:
 
-- Logo sekolah
-- Informasi kontak
-- Menu navigasi
-- Informasi tambahan
+* Logo sekolah
+* Informasi kontak
+* Menu navigasi
+* Informasi tambahan
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+# 🛠️ Teknologi yang Digunakan
 
-Project ini menggunakan beberapa teknologi, yaitu:
+Project ini menggunakan beberapa teknologi dan tools, yaitu:
 
-- **HTML5** — Struktur halaman website
-- **CSS3** — Styling dan layout website
-- **JavaScript** — Interaksi dan fungsi website
-- **Figma** — Perancangan UI/UX
-- **Visual Studio Code** — Code editor
-- **Live Server** — Menjalankan website secara lokal
+* **HTML5** — Struktur halaman website
+* **CSS3** — Styling dan layout website
+* **JavaScript** — Interaksi dan fungsi website
+* **Figma** — Perancangan UI/UX
+* **Visual Studio Code** — Code editor
+* **Live Server** — Menjalankan website secara lokal
 
 ---
 
-##  Struktur Project
+# 📐 Dokumentasi Teknis
+
+Bagian ini berisi dokumentasi proses perancangan hingga implementasi website.
+
+## 1. Wireframe
+
+Wireframe digunakan sebagai rancangan awal untuk menentukan struktur, tata letak, dan posisi setiap elemen pada website sebelum masuk ke tahap desain visual.
+
+![Wireframe](img/wireframe.png)
+
+> Ganti `img/wireframe.png` dengan nama dan lokasi file wireframe yang digunakan pada project.
+
+---
+
+## 2. UI Design
+
+UI Design dibuat menggunakan Figma untuk menentukan tampilan visual website, termasuk warna, tipografi, layout, tombol, card, gambar, dan komponen lainnya.
+
+![UI Design](img/ui-design.png)
+
+> Ganti `img/ui-design.png` dengan nama dan lokasi file desain Figma yang digunakan.
+
+---
+
+## 3. Hasil Implementasi
+
+Desain yang telah dibuat kemudian diimplementasikan ke dalam website menggunakan HTML, CSS, dan JavaScript.
+
+![Hasil Implementasi](img/website.png)
+
+> Ganti `img/website.png` dengan screenshot hasil website yang sudah selesai dibuat.
+
+---
+
+## 4. Dokumentasi Tampilan Website
+
+### Beranda
+
+Menampilkan informasi utama sekolah, hero section, deskripsi singkat, serta tombol menuju informasi lainnya.
+
+![Beranda](img/beranda.png)
+
+### Tentang Sekolah
+
+Menampilkan informasi mengenai profil, sistem pembelajaran, program, keunggulan, serta fasilitas sekolah.
+
+![Tentang](img/tentang.png)
+
+### Kegiatan
+
+Menampilkan berbagai kegiatan siswa seperti olimpiade, seni, olahraga, kesehatan, sosial, dan leadership.
+
+![Kegiatan](img/kegiatan.png)
+
+### PPDB
+
+Menampilkan informasi mengenai proses dan alur Penerimaan Peserta Didik Baru.
+
+![PPDB](img/ppdb.png)
+
+### Galeri
+
+Menampilkan dokumentasi kegiatan dan aktivitas sekolah.
+
+![Galeri](img/galeri.png)
+
+### Contact Us
+
+Menampilkan informasi kontak sekolah seperti email, nomor telepon, WhatsApp, dan alamat.
+
+![Contact](img/contact.png)
+
+---
+
+# 📁 Struktur Project
 
 Contoh struktur folder:
 
@@ -190,16 +269,24 @@ Tugas-Sekolah-Website/
 │   ├── hero.jpg
 │   ├── kegiatan-1.jpg
 │   ├── kegiatan-2.jpg
-│   └── ...
+│   ├── wireframe.png
+│   ├── ui-design.png
+│   ├── website.png
+│   ├── beranda.png
+│   ├── tentang.png
+│   ├── kegiatan.png
+│   ├── ppdb.png
+│   ├── galeri.png
+│   └── contact.png
 │
-└── Readme.md
+└── README.md
 ```
 
 > Struktur folder dapat disesuaikan dengan struktur project yang digunakan.
 
 ---
 
-# Cara Mendapatkan Project
+# 📥 Cara Mendapatkan Project
 
 ## 1. Clone Repository
 
@@ -229,7 +316,7 @@ Cara lainnya adalah:
 
 ---
 
-#  Cara Menjalankan Website
+# ▶️ Cara Menjalankan Website
 
 ## Menggunakan Visual Studio Code + Live Server
 
@@ -303,10 +390,10 @@ Ketika website pertama kali dibuka, pengguna akan masuk ke halaman **Beranda**.
 
 Di bagian ini terdapat:
 
-- Hero section
-- Informasi singkat sekolah
-- Foto kegiatan
-- Tombol menuju informasi lainnya
+* Hero section
+* Informasi singkat sekolah
+* Foto kegiatan
+* Tombol menuju informasi lainnya
 
 ---
 
@@ -346,10 +433,10 @@ Scroll ke bagian **Tentang Sekolah**.
 
 Pengguna dapat membaca informasi mengenai:
 
-- Sistem pembelajaran
-- Program sekolah
-- Keunggulan sekolah
-- Fasilitas
+* Sistem pembelajaran
+* Program sekolah
+* Keunggulan sekolah
+* Fasilitas
 
 ---
 
@@ -357,12 +444,12 @@ Pengguna dapat membaca informasi mengenai:
 
 Pada bagian **Kegiatan**, pengguna dapat melihat aktivitas sekolah seperti:
 
-- Olimpiade
-- Seni
-- Olahraga
-- Kesehatan
-- Sosial
-- Leadership
+* Olimpiade
+* Seni
+* Olahraga
+* Kesehatan
+* Sosial
+* Leadership
 
 ---
 
@@ -386,11 +473,11 @@ Klik menu **Galeri** untuk melihat dokumentasi kegiatan sekolah.
 
 Galeri dapat berisi foto:
 
-- Pembelajaran
-- Latihan
-- Kreativitas siswa
-- Kebersamaan
-- Kegiatan sekolah
+* Pembelajaran
+* Latihan
+* Kreativitas siswa
+* Kebersamaan
+* Kegiatan sekolah
 
 ---
 
@@ -400,9 +487,9 @@ Scroll ke bagian **Contact Us** atau **Footer**.
 
 Pengguna dapat melihat informasi seperti:
 
-- Email
-- Nomor telepon
-- Alamat sekolah
+* Email
+* Nomor telepon
+* Alamat sekolah
 
 ---
 
@@ -410,7 +497,7 @@ Pengguna dapat melihat informasi seperti:
 
 Untuk mengubah teks pada website:
 
-### 1. Buka file HTML
+## 1. Buka file HTML
 
 Contohnya:
 
@@ -418,7 +505,7 @@ Contohnya:
 index.html
 ```
 
-### 2. Cari teks yang ingin diubah
+## 2. Cari teks yang ingin diubah
 
 Contoh:
 
@@ -426,7 +513,7 @@ Contoh:
 <h1>Sekolah yang menginspirasi generasi masa depan</h1>
 ```
 
-### 3. Ganti teks
+## 3. Ganti teks
 
 Contoh:
 
@@ -434,7 +521,7 @@ Contoh:
 <h1>Sekolah yang Mempersiapkan Masa Depan</h1>
 ```
 
-### 4. Simpan
+## 4. Simpan
 
 Tekan:
 
@@ -448,7 +535,7 @@ Kemudian refresh browser.
 
 # 🖼️ Tata Cara Mengganti Gambar
 
-### 1. Siapkan gambar
+## 1. Siapkan gambar
 
 Format yang disarankan:
 
@@ -459,7 +546,7 @@ Format yang disarankan:
 .webp
 ```
 
-### 2. Masukkan gambar ke folder
+## 2. Masukkan gambar ke folder
 
 Contoh:
 
@@ -470,7 +557,7 @@ img/
 └── kegiatan-2.jpg
 ```
 
-### 3. Hubungkan gambar ke HTML
+## 3. Hubungkan gambar ke HTML
 
 Contoh:
 
@@ -484,7 +571,7 @@ Untuk mengganti gambar:
 <img src="img/hero-baru.jpg" alt="Kegiatan siswa">
 ```
 
-### ⚠️ Perhatikan nama file
+## ⚠️ Perhatikan Nama File
 
 Penulisan nama file harus sama.
 
@@ -529,7 +616,7 @@ Warna tersebut dapat disesuaikan dengan identitas visual sekolah.
 
 ---
 
-# Tata Cara Mengubah Font
+# 🔤 Tata Cara Mengubah Font
 
 Font dapat diubah melalui CSS.
 
@@ -549,12 +636,12 @@ Untuk menggunakan Google Fonts, tambahkan font pada bagian `<head>` HTML, lalu t
 
 Website dibuat agar dapat menyesuaikan berbagai ukuran layar:
 
-- Desktop
-- Laptop
-- Tablet
-- Smartphone
+* Desktop
+* Laptop
+* Tablet
+* Smartphone
 
-### Cara mengecek responsive
+## Cara Mengecek Responsive
 
 1. Buka website di browser.
 2. Tekan:
@@ -575,10 +662,10 @@ F12
 
 Periksa:
 
-- Lokasi folder gambar
-- Nama file
-- Ekstensi file
-- Penulisan path
+* Lokasi folder gambar
+* Nama file
+* Ekstensi file
+* Penulisan path
 
 Contoh:
 
@@ -612,7 +699,7 @@ Pastikan file JS sudah terhubung:
 <script src="js/script.js"></script>
 ```
 
-Kemudian periksa tab **Console** pada browser:
+Kemudian periksa tab Console pada browser:
 
 ```text
 F12 → Console
@@ -663,20 +750,26 @@ git push origin main
 ```
 
 ---
-#  Cara Update Project
+
+# 🔄 Cara Update Project
 
 Setelah melakukan perubahan pada website:
 
+```bash
 git add .
-
+```
 
 Kemudian:
 
+```bash
 git commit -m "update website"
+```
 
 Lalu:
 
+```bash
 git push origin main
+```
 
 ---
 
@@ -688,52 +781,52 @@ git push origin main
                         ▼
                      BERANDA
                         │
-           ┌────────────┼────────────┐
-           ▼            ▼            ▼
-        TENTANG      KEGIATAN       PPDB
-           │            │            │
-           │            │            ▼
-           │            │       INFORMASI
-           │            │       PENDAFTARAN
-           │            │
-           └───────┬────┘
-                   ▼
-                 GALERI
-                   │
-                   ▼
-                 KONTAK
+             ┌──────────┼──────────┐
+             ▼          ▼          ▼
+          TENTANG    KEGIATAN     PPDB
+             │          │          │
+             │          │          ▼
+             │          │      INFORMASI
+             │          │      PENDAFTARAN
+             │          │
+             └──────┬───┘
+                    ▼
+                  GALERI
+                    │
+                    ▼
+                  KONTAK
 ```
 
 ---
 
-# Pengembangan Selanjutnya
+# 🚀 Pengembangan Selanjutnya
 
 Website masih dapat dikembangkan dengan beberapa fitur tambahan, seperti:
 
-- Berita sekolah
-- Pengumuman sekolah
-- Filter galeri
-- Form contact yang terhubung ke email
-- Integrasi Google Maps
-- Animasi halaman
-- Dark mode
+* Berita sekolah
+* Pengumuman sekolah
+* Filter galeri
+* Form contact yang terhubung ke email
+* Integrasi Google Maps
+* Animasi halaman
+* Dark mode
 
 ---
 
-# Target Pengguna
+# 👥 Target Pengguna
 
 Website ditujukan untuk:
 
-- Calon siswa
-- Siswa
-- Orang tua/wali
-- Guru
-- Staff sekolah
-- Masyarakat umum
+* Calon siswa
+* Siswa
+* Orang tua/wali
+* Guru
+* Staff sekolah
+* Masyarakat umum
 
 ---
 
-# Lisensi
+# 📄 Lisensi
 
 Project ini dibuat untuk kebutuhan **pembelajaran dan pengembangan website profil sekolah**.
 
