@@ -211,7 +211,7 @@ export default function PpdbPage() {
                 >
                   <FaEnvelope className="h-4 w-4 shrink-0 text-[#B9DCD2]" />
                   <span className="break-all">
-                    admission-lv@sph.ac.id
+                    SMA Pelita Harapan
                   </span>
                 </a>
                 <a

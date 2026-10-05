@@ -221,7 +221,7 @@ export default function Home() {
 
       <section
         id="beranda"
-        className="relative flex min-h-[70svh] items-center overflow-hidden md:min-h-[78svh] lg:min-h-[85svh]"
+        className="relative flex min-h-[70svh] items-center overflow-hidden px-6 md:min-h-[78svh] md:px-10 lg:min-h-[85svh] lg:px-14"
       >
         <Image
           src={heroImage}
@@ -235,7 +235,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A2E26]/80 via-[#0A2E26]/50 to-black/10" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent" />
 
-        <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 pb-12 pt-28 md:px-10 md:pb-16 md:pt-32 lg:px-14">
+        <div className="relative z-10 mx-auto w-full max-w-[1200px] pb-12 pt-28 md:pb-16 md:pt-32">
           <div className="hero-enter max-w-[580px]">
 
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md md:text-sm">
@@ -1269,7 +1269,7 @@ export default function Home() {
 
               <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#E1F2EE] px-4 py-2 text-[12px] font-semibold text-[#3C8977]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#3C8977]" />
-                Contact Us
+                Contact
               </div>
 
               <h2 className="max-w-[720px] text-[30px] font-extrabold leading-[1.1] tracking-tight text-[#163D32] sm:text-[38px] md:text-[50px] lg:text-[56px]">
@@ -1351,9 +1351,9 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="mt-1 block cursor-pointer text-[13px] leading-5 text-white/80 underline-offset-4 transition hover:underline"
                   >
-                    SMA Pelita Harapan
+                    Lippo Village, Jl. Boulevard Palem Raya No. 2500,
                     <br />
-                    2500 Bulevar Palem Raya, Lippo Village, Tangerang 15810, Indonesia
+                    Kelapa Dua, Tangerang, Banten 15810
                   </a>
 
                 </div>
