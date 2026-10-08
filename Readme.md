@@ -76,6 +76,7 @@ Menu yang tersedia:
 - **Kegiatan**
 - **PPDB**
 - **Galeri**
+- **Contact us*
 - **Gabung Sekarang**
 
 Pengguna dapat memilih menu untuk menuju bagian atau halaman yang diinginkan.
