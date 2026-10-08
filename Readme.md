@@ -142,8 +142,7 @@ Bagian Contact Us berisi informasi yang dapat digunakan untuk menghubungi sekola
 Contohnya:
 
 - Email
-- Nomor telepon
-- WhatsApp
+- Nomor telepon/ whatsapp
 - Alamat sekolah
 
 ### 8. Footer
