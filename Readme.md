@@ -6,6 +6,7 @@ Website dirancang dengan tampilan modern, bersih, informatif, dan responsif sehi
 
 ----
 
+
 ## 📌 Daftar Isi
 
 - [Tentang Project](#-tentang-project)
@@ -47,7 +48,7 @@ Website ini menyediakan berbagai informasi seperti:
 
 Website dibuat agar informasi sekolah dapat disampaikan secara lebih menarik, terstruktur, dan mudah digunakan.
 
----
+----
 
 ## 🎯 Tujuan Project
 
